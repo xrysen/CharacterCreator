@@ -13,6 +13,7 @@ class Race(models.Model):
   race_spd = models.IntegerField()
   race_darkvision = models.BooleanField()
   race_has_subrace = models.BooleanField()
+  race_has_special = models.BooleanField()
 
   def __str__(self):
     return self.race_name
@@ -31,3 +32,15 @@ class SubRace(models.Model):
 
   def __str__(self):
     return self.sub_race_name
+
+class Class(models.Model):
+  class_name = models.CharField(max_length=50)
+  class_description = models.TextField()
+  class_hit_die = models.IntegerField()
+  class_primary_ability = models.CharField(max_length=50)
+  class_save_throw1 = models.CharField(max_length=4)
+  class_save_throw2 = models.CharField(max_length=4)
+  class_armor_and_weapons = models.TextField()
+
+  def __str__(self):
+    return self.class_name
