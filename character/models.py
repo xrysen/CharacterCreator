@@ -4,9 +4,15 @@ from django.db import models
 class Race(models.Model):
   race_name = models.CharField(max_length=50)
   race_description = models.TextField()
-  race_str_mod = models.IntegerField()
-  race_dex_mod = models.IntegerField()
-  race_con_mod = models.IntegerField()
-  race_int_mod = models.IntegerField()
-  race_wis_mod = models.IntegerField()
-  race_cha_mod = models.IntegerField()
+  race_str_bonus = models.IntegerField()
+  race_dex_bonus = models.IntegerField()
+  race_con_bonus = models.IntegerField()
+  race_int_bonus = models.IntegerField()
+  race_wis_bonus = models.IntegerField()
+  race_cha_bonus = models.IntegerField()
+  race_spd = models.IntegerField()
+  race_darkvision = models.BooleanField()
+  race_has_subrace = models.BooleanField()
+
+  def __str__(self):
+    return self.race_name
