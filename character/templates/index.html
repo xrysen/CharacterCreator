@@ -15,23 +15,23 @@
       <div class = "dropdown-menu" aria-labelledby = {{ race.race_name }}>
         {% for sub_race in sub_races %}
           {% if sub_race.sub_race_parent == race %}
-            <a class = "dropdown-item" href="#" id={{sub_race.sub_race_name|slice:4}}>{{sub_race.sub_race_name}}</a>
+            <a class = "dropdown-item" href="#" id="subrace-{{ sub_race.id }}">{{sub_race.sub_race_name}}</a>
           {% endif %}
         {% endfor %}
       </div>
     </div>
     {% else %}
     <div class = "btn-group">
-      <button class = "btn btn-primary" id = {{ race.race_name }}>{{ race.race_name }}</button>
+      <button class = "btn btn-primary" id = "race-{{race.id}}">{{ race.race_name }}</button>
     </div>
     {% endif %}
   {% endfor %}
   <br />
   {% for race in races %} 
-    <p id = {{race.id}}>{{race.race_description}}</p>
+    <p class = "race-description" id = "rdescription-{{race.id}}">{{race.race_description}}</p>
   {% endfor %}
   {% for sub_race in sub_races %}
-    <p id = {{sub_race.id}}>{{sub_race.sub_race_description}}</p>
+    <p id = "srdescription-{{sub_race.id}}">{{sub_race.sub_race_description}}</p>
   {% endfor %}
 </div>
 {% endblock %}
