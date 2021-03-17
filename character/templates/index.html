@@ -28,10 +28,15 @@
   {% endfor %}
   <br />
   {% for race in races %} 
-    <p class = "race-description" id = "rdescription-{{race.id}}">{{race.race_description}}</p>
+    <p class = "race-description" id = "rdescription-{{race.id}}">
+      <strong>{{ race.race_name}} </strong><br />
+      {{race.race_description}}</p>
   {% endfor %}
   {% for sub_race in sub_races %}
-    <p id = "srdescription-{{sub_race.id}}">{{sub_race.sub_race_description}}</p>
+    <p id = "srdescription-{{sub_race.id}}" style="text-align: left;">
+        <strong>{{ sub_race.sub_race_name}} </strong><br />
+        {{sub_race.sub_race_description}}
+    </p>
   {% endfor %}
 </div>
 {% endblock %}

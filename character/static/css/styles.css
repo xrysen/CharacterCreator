@@ -1,7 +1,11 @@
 .main-container {
   text-align: center;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .race-description {
   margin-top: 40px;
+  text-align: left;
 }
