@@ -2,6 +2,19 @@
 
 {% block body %} 
 
-<h1>Create New Character</h1>
-
+<div class = "main-container">
+  <h1>Create New Character</h1>
+  <br /><br />
+  <h3 class = "h3 mb-3 font-weight-normal">Choose Race:</h3>
+  {% for race in races %}
+    {% if race.race_has_subrace %}
+      <button class = "btn btn-primary dropdown-toggle" id = {{ race.race_name }}>{{ race.race_name }}</button>
+      <div class = "dropdown-menu" aria-labelledby = {{ race.race_name }}>
+        <a class = "dropdown-item" href="#">Test</a>
+      </div>
+    {% else %}
+      <button class = "btn btn-primary" id = {{ race.race_name }}>{{ race.race_name }}</button>
+    {% endif %}
+  {% endfor %}
+</div>
 {% endblock %}
