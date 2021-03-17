@@ -8,12 +8,22 @@
   <h3 class = "h3 mb-3 font-weight-normal">Choose Race:</h3>
   {% for race in races %}
     {% if race.race_has_subrace %}
-      <button class = "btn btn-primary dropdown-toggle" id = {{ race.race_name }}>{{ race.race_name }}</button>
+    <div class = "btn-group">
+      <button class = "btn btn-primary dropdown-toggle" type="button"  id = {{ race.race_name }} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {{ race.race_name }}
+      </button>
       <div class = "dropdown-menu" aria-labelledby = {{ race.race_name }}>
-        <a class = "dropdown-item" href="#">Test</a>
+        {% for sub_race in sub_races %}
+          {% if sub_race.sub_race_parent == race %}
+            <a class = "dropdown-item" href="#">{{sub_race.sub_race_name}}</a>
+          {% endif %}
+        {% endfor %}
       </div>
+    </div>
     {% else %}
+    <div class = "btn-group">
       <button class = "btn btn-primary" id = {{ race.race_name }}>{{ race.race_name }}</button>
+    </div>
     {% endif %}
   {% endfor %}
 </div>
