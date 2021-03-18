@@ -5,5 +5,5 @@ from .views import RaceApiView
 
 urlpatterns = [
   path('', views.index, name='index'),
-  path('api/', RaceApiView.as_view())
+  path('race/', RaceApiView.as_view())
 ]
