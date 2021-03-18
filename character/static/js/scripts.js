@@ -29,7 +29,7 @@ $(document).ready(() => {
     $(`#subrace-${i}`).on("click", ()=> {
       $(`#srdescription-${i}`).css("display","block");
       $(`.main-container`).append(
-        `<button class = "btn btn-primary" id = "next-btn">Next</button>`
+        `<button class = "btn btn-primary" id = "next-btn" style="margin-bottom: 20px;">Next</button>`
       );
     })
   }
