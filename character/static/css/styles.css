@@ -5,6 +5,8 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   overflow-y: hidden;
+  font-family: 'Vollkorn', serif;
+  font-size: 18px;
 }
 
 .main-container {
@@ -21,7 +23,10 @@ body {
   background-position:center center;
   background-repeat:no-repeat;
   background-attachment:fixed;
-  overflow-x: overlay;
+}
+
+.main-container::-webkit-scrollbar {
+  display: none;
 }
 
 .race-description {
