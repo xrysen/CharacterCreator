@@ -2,8 +2,9 @@ $(document).ready(() => {
   let race_choice = 0;
   let sub_race_choice = 0;
   let progress = "";
+  let classData = fetch("http://localhost:8000/character/class", {mode: 'cors'});
 
-  console.log("Connected");
+  console.log(classData);
 
   const hideAll = () => {
     for (let i = 0; i < 12; i++) {
