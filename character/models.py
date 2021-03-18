@@ -4,6 +4,7 @@ from django.db import models
 class Race(models.Model):
   race_name = models.CharField(max_length=50)
   race_description = models.TextField()
+  race_img = models.TextField()
   race_str_bonus = models.IntegerField()
   race_dex_bonus = models.IntegerField()
   race_con_bonus = models.IntegerField()

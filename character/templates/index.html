@@ -28,27 +28,33 @@
   {% endfor %}
   <br />
   {% for race in races %} 
+  <div style = "text-align: center;" class = "race-header" id="r-header-{{race.id}}">
+    <h3>{{ race.race_name}} </h3>
+    <img src = "{{race.race_img}}" height=300>
+  </div>
     <p class = "race-description" id = "rdescription-{{race.id}}">
-      <strong>{{ race.race_name}} </strong><br />
       {{race.race_description}}
     <br /><br />
     {% if race.race_str_bonus %}
-      Strength: + {{race.race_str_bonus}}
+      Strength: +{{race.race_str_bonus}}
     {% endif %}
     {% if race.race_dex_bonus %}
-      Dexterity: + {{ race.race_dex_bonus}}
+      Dexterity: +{{ race.race_dex_bonus}}
     {% endif %}
     {% if race.race_con_bonus %}
-      Constitution: + {{ race.race_con_bonus}}
+      Constitution: +{{ race.race_con_bonus}}
     {% endif %}
     {% if race.race_int_bonus %}
-      Intelligence: + {{ race.race_int_bonus}}
+      Intelligence: +{{ race.race_int_bonus}}
     {% endif %}
     {% if race.race_wis_bonus %}
-      Wisdom: + {{ race.race_wis_bonus}}
+      Wisdom: +{{ race.race_wis_bonus}}
     {% endif %}
     {% if race.race_cha_bonus %}
-      Charisma: + {{ race.race_cha_bonus}}
+      Charisma: +{{ race.race_cha_bonus}}
+    {% endif %}
+    {% if race.race_name == "Half-Elf" %} 
+    , +1 to two other ability scores 
     {% endif %}
     </p>
   {% endfor %}
@@ -58,22 +64,22 @@
         {{sub_race.sub_race_description}}
         <br /><br />
         {% if sub_race.sub_race_str_bonus %}
-          Strength: + {{ sub_race.sub_race_str_bonus }}
+          Strength: +{{ sub_race.sub_race_str_bonus }}
         {% endif %}
         {% if sub_race.sub_race_dex_bonus %}
-          Dexterity: + {{ sub_race.sub_race_dex_bonus }}
+          Dexterity: +{{ sub_race.sub_race_dex_bonus }}
         {% endif %}
         {% if sub_race.sub_race_con_bonus %}
-          Constitution: + {{ sub_race.sub_race_con_bonus }}
+          Constitution: +{{ sub_race.sub_race_con_bonus }}
         {% endif %}
         {% if sub_race.sub_race_int_bonus %}
-          Intelligence: + {{ sub_race.sub_race_int_bonus }}
+          Intelligence: +{{ sub_race.sub_race_int_bonus }}
         {% endif %}
         {% if sub_race.sub_race_wis_bonus %}
-          Wisdom: + {{ sub_race.sub_race_wis_bonus }}
+          Wisdom: +{{ sub_race.sub_race_wis_bonus }}
         {% endif %}
         {% if sub_race.sub_race_cha_bonus %}
-          Charisma: + {{ sub_race.sub_race_cha_bonus }}
+          Charisma: +{{ sub_race.sub_race_cha_bonus }}
         {% endif %}
     </p>
   {% endfor %}
