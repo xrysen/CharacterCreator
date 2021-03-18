@@ -22,6 +22,7 @@ $(document).ready(() => {
     switch (progress) {
       case "class":
         emptyMainContainer();
+        chooseClass(race_choice, sub_race_choice);
     }
   }
 
@@ -58,8 +59,8 @@ $(document).ready(() => {
     }
   }
 
-  const chooseClass = (race) => {
-
+  const chooseClass = (race, subRace) => {
+    
   }
 
   hideAll();
