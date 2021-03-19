@@ -1,19 +1,12 @@
 
   let raceInfo = [];
 
-  const getClassData = () => {
-    return fetch(CLASS_ENDPOINT, {
-      mode: "cors",
-    }).then((res) => res.json());
-  };
-
   const getRaceData = () => {
     return fetch(RACE_ENDPOINT, {
       mode: "cors",
     }).then((res) => res.json());
   };
 
-  const classData = getClassData();
   const raceData = getRaceData();
 
   const removeRaceInfo = () => {
@@ -177,5 +170,5 @@
     });
   };
 
-  showRaceButtons();
+  //showRaceButtons();
 
