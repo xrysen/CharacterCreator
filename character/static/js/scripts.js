@@ -72,13 +72,23 @@ $(document).ready(() => {
         if (race.race_has_subrace) {
           $(".race-container").append(
             `
-            <div class = "btn-group" id = "race-buttons">
+            <div class = "btn-group" id = "race-buttons-${race.id}">
               <button class = "btn btn-primary dropdown-toggle type="button" id = "race-${race.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 ${race.race_name}
               </button>
+               <div id = "drop-down-${race.id}" class = "dropdown-menu" aria-labelledby = ${race.race_name}>
+              </div>
             </div>
             `
           );
+
+          for (const subRace of race.sub_races) {
+            $(`#drop-down-${race.id}`).append(
+              `
+              <a class = "dropdown-item" id = "subrace-${subRace.id}">${subRace.sub_race_name}</a>
+              `
+            );
+          }
 
           $(`#race-${race.id}`).on("click", () => {
             showRaceInfo(race);
