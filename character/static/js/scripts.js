@@ -5,13 +5,13 @@ $(document).ready(() => {
   let classes = [];
 
   const getClassData = () => {
-    return fetch("http://localhost:8000/character/class", {
+    return fetch(CLASS_ENDPOINT, {
       mode: "cors",
     }).then((res) => res.json());
   };
 
   const getRaceData = () => {
-    return fetch("http://localhost:8000/character/race", {
+    return fetch(RACE_ENDPOINT, {
       mode: "cors",
     }).then((res) => res.json());
   };
@@ -50,6 +50,7 @@ $(document).ready(() => {
       }
     });
   };
+
   showRaceButtons();
 
   const hideAll = () => {
