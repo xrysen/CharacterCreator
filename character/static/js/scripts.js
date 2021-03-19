@@ -1,4 +1,4 @@
-$(document).ready(() => {
+
   let raceInfo = [];
 
   const getClassData = () => {
@@ -19,6 +19,10 @@ $(document).ready(() => {
   const removeRaceInfo = () => {
     $(".race-info").remove();
   };
+
+  const emptyMainContainer = () => {
+    $(".race-container").remove();
+  }
 
   const showRaceInfo = (race) => {
     removeRaceInfo();
@@ -174,4 +178,4 @@ $(document).ready(() => {
   };
 
   showRaceButtons();
-});
+
