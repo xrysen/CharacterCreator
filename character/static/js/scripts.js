@@ -1,7 +1,4 @@
 $(document).ready(() => {
-  let race_choice = 0;
-  let sub_race_choice = 0;
-  let numRaces = 0;
   let raceInfo = [];
 
   const getClassData = () => {
@@ -33,12 +30,34 @@ $(document).ready(() => {
         <p class = "race-description">
           ${race.race_description}
         </p>
+        <p class = "race-description" id = "stat-bonus">
+        </p>
       </div>
       `
     )
 
     if(race.race_str_bonus) {
-      $(".race-info").append(`<p class = "race-description">Strength: +${race.race_str_bonus}</p>`);
+      $("#stat-bonus").append(`<span class = "race-stat">Strength: +${race.race_str_bonus}</span>`);
+    }
+
+    if(race.race_con_bonus) {
+      $("#stat-bonus").append(`<span class = "race-stat">Constitution: +${race.race_con_bonus}</span>`);
+    }
+
+    if(race.race_dex_bonus) {
+      $("#stat-bonus").append(`<span class = "race-stat">Dexterity: +${race.race_dex_bonus}</span>`);
+    }
+
+    if(race.race_int_bonus) {
+      $("#stat-bonus").append(`<span class = "race-stat">Intelligence: +${race.race_int_bonus}</span>`);
+    }
+
+    if(race.race_wis_bonus) {
+      $("#stat-bonus").append(`<span class = "race-stat">Wisdom: +${race.race_wis_bonus}</span>`);
+    }
+
+    if(race.race_cha_bonus) {
+      $("#stat-bonus").append(`<span class = "race-stat">Charisma: +${race.race_cha_bonus}</span>`);
     }
   }
 
@@ -48,7 +67,6 @@ $(document).ready(() => {
       '<h3 class = "h3 mb-3 font-weight-normal">Choose Race: </h3>'
     );
     raceData.then((races) => {
-      numRaces = races.length;
       for (const race of races) {
         raceInfo.push(race);
         if (race.race_has_subrace) {

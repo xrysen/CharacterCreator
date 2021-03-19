@@ -38,6 +38,10 @@ body {
   margin-top: 40px;
 }
 
+.race-stat {
+  padding-right: 20px;
+}
+
 p {
   margin-left: 40px;
   margin-right: 40px;
