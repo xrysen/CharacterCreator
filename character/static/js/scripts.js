@@ -36,6 +36,10 @@ $(document).ready(() => {
       </div>
       `
     )
+
+    if(race.race_str_bonus) {
+      $(".race-info").append(`<p class = "race-description">Strength: +${race.race_str_bonus}</p>`);
+    }
   }
 
   const showRaceButtons = () => {
@@ -80,64 +84,4 @@ $(document).ready(() => {
   };
 
   showRaceButtons();
-  
-
-  const hideAll = () => {
-    for (let i = 0; i < 12; i++) {
-      $(`#r-header-${i}`).css("display", "none");
-      $(`#rdescription-${i}`).css("display", "none");
-      $(`#srdescription-${i}`).css("display", "none");
-      $(`#next-btn`).remove();
-    }
-  };
-
-  const emptyMainContainer = () => {
-    $(".race-container").remove();
-  };
-
-  const next = (progress) => {
-    switch (progress) {
-      case "class":
-        emptyMainContainer();
-        chooseClass(race_choice, sub_race_choice);
-    }
-  };
-
-  const chooseRace = () => {
-    for (let i = 0; i < 12; i++) {
-      $(`#race-${i}`).on("click", () => {
-        hideAll();
-        race_choice = i;
-        $(`#r-header-${i}`).css("display", "block");
-        $(`#rdescription-${i}`).css("display", "block");
-        if (i !== 2 && i !== 3 && i !== 4 && i !== 6) {
-          $(`.race-container`).append(
-            `<button class = "btn btn-primary" id = "next-btn" style="margin-bottom: 20px;">Next</button>`
-          );
-
-          $("#next-btn").on("click", () => {
-            next("class");
-          });
-        }
-      });
-    }
-
-    for (let i = 0; i < 12; i++) {
-      $(`#subrace-${i}`).on("click", () => {
-        sub_race_choice = i;
-        $(`#srdescription-${i}`).css("display", "block");
-        $(`.race-container`).append(
-          `<button class = "btn btn-primary" id = "next-btn" style="margin-bottom: 20px;">Next</button>`
-        );
-        $("#next-btn").on("click", () => {
-          next("class");
-        });
-      });
-    }
-  };
-
-  const chooseClass = (race, subRace) => {};
-
-  hideAll();
-  chooseRace();
 });
