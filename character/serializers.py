@@ -9,5 +9,4 @@ class RaceSerializer(serializers.ModelSerializer):
 class ClassSerializer(serializers.ModelSerializer):
   class Meta:
     model = Class
-    fields = ['id', 'class_name', 'class_image', 'class_description', 'class_hit_die', 'class_save_throw1', 'class_save_throw2', 'class_armor', 'class_weapons']
-    
+    fields = '__all__'
