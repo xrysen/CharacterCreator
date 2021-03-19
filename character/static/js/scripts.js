@@ -1,8 +1,8 @@
 $(document).ready(() => {
   let race_choice = 0;
   let sub_race_choice = 0;
-  let progress = "";
-  let classes = [];
+  let numRaces = 0;
+  let raceInfo = [];
 
   const getClassData = () => {
     return fetch(CLASS_ENDPOINT, {
@@ -19,13 +19,34 @@ $(document).ready(() => {
   const classData = getClassData();
   const raceData = getRaceData();
 
+  const removeRaceInfo = () => {
+    $(".race-info").remove();
+  }
+
+  const showRaceInfo = (race) => {
+    removeRaceInfo();
+    $(".race-container").append(
+      `
+      <div class = "race-info">
+        <h1 class = "race-header">${race.race_name}</h1>
+        <img src = "${race.race_img}" height = 300>
+        <p class = "race-description">
+          ${race.race_description}
+        </p>
+      </div>
+      `
+    )
+  }
+
   const showRaceButtons = () => {
     $(".main-container").append('<div class = "race-container"></div>');
     $(".race-container").append(
       '<h3 class = "h3 mb-3 font-weight-normal">Choose Race: </h3>'
     );
     raceData.then((races) => {
+      numRaces = races.length;
       for (const race of races) {
+        raceInfo.push(race);
         if (race.race_has_subrace) {
           $(".race-container").append(
             `
@@ -36,6 +57,10 @@ $(document).ready(() => {
             </div>
             `
           );
+
+          $(`#race-${race.id}`).on("click", () => {
+            showRaceInfo(race);
+          });
         } else {
           $(".race-container").append(
             `
@@ -46,12 +71,16 @@ $(document).ready(() => {
             </div>
             `
           );
+          $(`#race-${race.id}`).on("click", () => {
+            showRaceInfo(race);
+          });
         }
       }
-    });
+    }); 
   };
 
   showRaceButtons();
+  
 
   const hideAll = () => {
     for (let i = 0; i < 12; i++) {
