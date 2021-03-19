@@ -71,6 +71,7 @@ $(document).ready(() => {
         `<span class = "race-stat">Charisma: +${race.race_cha_bonus}</span>`
       );
     }
+    
   };
 
   const showRaceButtons = () => {
@@ -144,11 +145,14 @@ $(document).ready(() => {
                   `<br /><br /><span class = "race-stat">Charisma: +${subRace.sub_race_cha_bonus}</span>`
                 );
               }
+
+              $(".race-info").append(`<button class = "btn btn-primary btn-lg">Next</button>`);
             });
           }
 
           $(`#race-${race.id}`).on("click", () => {
             showRaceInfo(race);
+            
           });
         } else {
           $(".race-container").append(
@@ -162,6 +166,7 @@ $(document).ready(() => {
           );
           $(`#race-${race.id}`).on("click", () => {
             showRaceInfo(race);
+            $(".race-info").append(`<button class = "btn btn-primary btn-lg">Next</button>`);
           });
         }
       }
