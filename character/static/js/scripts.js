@@ -143,7 +143,11 @@
                 );
               }
 
-              $(".race-info").append(`<button class = "btn btn-primary btn-lg">Next</button>`);
+              $(".race-info").append(`<button class = "btn btn-primary btn-lg" id = "next-button">Next</button>`);
+              $("#next-button").on("click", () => {
+                emptyMainContainer();
+                showClassButtons();
+              });
             });
           }
 
@@ -163,12 +167,16 @@
           );
           $(`#race-${race.id}`).on("click", () => {
             showRaceInfo(race);
-            $(".race-info").append(`<button class = "btn btn-primary btn-lg">Next</button>`);
+            $(".race-info").append(`<button class = "btn btn-primary btn-lg" id = "next-button">Next</button>`);
+            $("#next-button").on("click", () => {
+              emptyMainContainer();
+              showClassButtons();
+            });
           });
         }
       }
     });
   };
 
-  //showRaceButtons();
+  showRaceButtons();
 
