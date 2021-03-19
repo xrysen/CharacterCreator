@@ -18,7 +18,7 @@ $(document).ready(() => {
 
   const removeRaceInfo = () => {
     $(".race-info").remove();
-  }
+  };
 
   const showRaceInfo = (race) => {
     removeRaceInfo();
@@ -26,7 +26,7 @@ $(document).ready(() => {
       `
       <div class = "race-info">
         <h1 class = "race-header">${race.race_name}</h1>
-        <img src = "${race.race_img}" height = 300>
+        <img src = "${race.race_img}" height = 300 style = "float: right;">
         <p class = "race-description">
           ${race.race_description}
         </p>
@@ -34,32 +34,44 @@ $(document).ready(() => {
         </p>
       </div>
       `
-    )
+    );
 
-    if(race.race_str_bonus) {
-      $("#stat-bonus").append(`<span class = "race-stat">Strength: +${race.race_str_bonus}</span>`);
+    if (race.race_str_bonus) {
+      $("#stat-bonus").append(
+        `<span class = "race-stat">Strength: +${race.race_str_bonus}</span>`
+      );
     }
 
-    if(race.race_con_bonus) {
-      $("#stat-bonus").append(`<span class = "race-stat">Constitution: +${race.race_con_bonus}</span>`);
+    if (race.race_con_bonus) {
+      $("#stat-bonus").append(
+        `<span class = "race-stat">Constitution: +${race.race_con_bonus}</span>`
+      );
     }
 
-    if(race.race_dex_bonus) {
-      $("#stat-bonus").append(`<span class = "race-stat">Dexterity: +${race.race_dex_bonus}</span>`);
+    if (race.race_dex_bonus) {
+      $("#stat-bonus").append(
+        `<span class = "race-stat">Dexterity: +${race.race_dex_bonus}</span>`
+      );
     }
 
-    if(race.race_int_bonus) {
-      $("#stat-bonus").append(`<span class = "race-stat">Intelligence: +${race.race_int_bonus}</span>`);
+    if (race.race_int_bonus) {
+      $("#stat-bonus").append(
+        `<span class = "race-stat">Intelligence: +${race.race_int_bonus}</span>`
+      );
     }
 
-    if(race.race_wis_bonus) {
-      $("#stat-bonus").append(`<span class = "race-stat">Wisdom: +${race.race_wis_bonus}</span>`);
+    if (race.race_wis_bonus) {
+      $("#stat-bonus").append(
+        `<span class = "race-stat">Wisdom: +${race.race_wis_bonus}</span>`
+      );
     }
 
-    if(race.race_cha_bonus) {
-      $("#stat-bonus").append(`<span class = "race-stat">Charisma: +${race.race_cha_bonus}</span>`);
+    if (race.race_cha_bonus) {
+      $("#stat-bonus").append(
+        `<span class = "race-stat">Charisma: +${race.race_cha_bonus}</span>`
+      );
     }
-  }
+  };
 
   const showRaceButtons = () => {
     $(".main-container").append('<div class = "race-container"></div>');
@@ -85,9 +97,54 @@ $(document).ready(() => {
           for (const subRace of race.sub_races) {
             $(`#drop-down-${race.id}`).append(
               `
-              <a class = "dropdown-item" id = "subrace-${subRace.id}">${subRace.sub_race_name}</a>
+              <a class = "dropdown-item subrace-dropdown" id = "subrace-${subRace.id}">${subRace.sub_race_name}</a>
               `
             );
+            $(`#subrace-${subRace.id}`).on("click", () => {
+              $(`.race-info`).append(
+                `
+                <p class = "race-description" id = "subrace-description">
+                <strong>${subRace.sub_race_name}:</strong> <br />
+                ${subRace.sub_race_description}
+                </p>
+                `
+              );
+              if (subRace.sub_race_str_bonus) {
+                $("#subrace-description").append(
+                  `<br /><br /><span class = "race-stat">Strength: +${subRace.sub_race_str_bonus}</span>`
+                );
+              }
+
+              if (subRace.sub_race_con_bonus) {
+                $("#subrace-description").append(
+                  `<br /><br /><span class = "race-stat">Constitution: +${subRace.sub_race_con_bonus}</span>`
+                );
+              }
+
+              if (subRace.sub_race_dex_bonus) {
+                $("#subrace-description").append(
+                  `<br /><br /><span class = "race-stat">Dexterity: +${subRace.sub_race_dex_bonus}</span>`
+                );
+              }
+
+              if (subRace.sub_race_int_bonus) {
+                $("#subrace-description").append(
+                  `<br /><br /><span class = "race-stat">Intelligence: +${subRace.sub_race_int_bonus}</span>`
+                );
+              }
+
+              if (subRace.sub_race_wis_bonus) {
+                $("#subrace-description").append(
+                  `<br /><br /><span class = "race-stat">Wisdom: +${subRace.sub_race_wis_bonus}</span>`
+                );
+              }
+
+              if (subRace.sub_race_cha_bonus) {
+                $("#subrace-description").append(
+                  `<br /><br /><span class = "race-stat">Charisma: +${subRace.sub_race_cha_bonus}</span>`
+                );
+              }
+            });
           }
 
           $(`#race-${race.id}`).on("click", () => {
@@ -108,7 +165,7 @@ $(document).ready(() => {
           });
         }
       }
-    }); 
+    });
   };
 
   showRaceButtons();
