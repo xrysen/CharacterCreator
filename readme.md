@@ -16,6 +16,7 @@ Frontend:
 - CSS
 - Javascript
 - jQuery
+- Bootstrap
 
 Backend:
 - Python
