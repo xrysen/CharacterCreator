@@ -62,3 +62,10 @@ class Skill(models.Model):
 
   def __str__(self):
     return self.skill_name
+
+class ClassSkill(models.Model):
+  class_id = models.ForeignKey(Class, on_delete=models.CASCADE, name = "class_id")
+  skill = models.ForeignKey(Skill, on_delete=models.CASCADE, related_name="class_skill")
+
+  def __str__(self):
+    return f"{self.class_id.class_name}, {self.skill.skill_name}"
