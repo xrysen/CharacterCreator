@@ -6,3 +6,18 @@ It's goal is to allow users to quickly roll new characters to use in any D&D Cam
 
 It is in the very early stages of development. 
 
+## Screenshots
+
+<img src = "https://github.com/xrysen/CharacterCreator/blob/main/docs/ss1.png?raw=true">
+
+## Technologies
+Frontend:
+- HTML 5
+- CSS
+- Javascript
+- jQuery
+
+Backend:
+- Python
+- Django
+- Django Rest Framework
