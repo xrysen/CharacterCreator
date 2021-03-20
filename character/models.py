@@ -34,6 +34,13 @@ class SubRace(models.Model):
   def __str__(self):
     return self.sub_race_name
 
+class Skill(models.Model):
+  skill_name = models.CharField(max_length=50)
+  skill_stat = models.CharField(max_length=10)
+
+  def __str__(self):
+    return self.skill_name
+
 class Class(models.Model):
   class_name = models.CharField(max_length=50)
   class_image = models.TextField()
@@ -47,26 +54,7 @@ class Class(models.Model):
   class_armor = models.TextField()
   class_weapons = models.TextField()
   class_num_skills = models.IntegerField()
+  class_skills = models.ManyToManyField(Skill, related_name = "skill_list")
 
   def __str__(self):
     return self.class_name
-
-class Tool(models.Model):
-  tool_name = models.CharField(max_length=50)
-
-  def __str__(self):
-    return self.tool_name
-
-class Skill(models.Model):
-  skill_name = models.CharField(max_length=50)
-  skill_stat = models.CharField(max_length=10)
-
-  def __str__(self):
-    return self.skill_name
-
-class ClassSkill(models.Model):
-  class_id = models.ForeignKey(Class, on_delete=models.CASCADE, name = "class_id")
-  skill = models.ForeignKey(Skill, on_delete=models.CASCADE, related_name="class_skill")
-
-  def __str__(self):
-    return f"{self.class_id.class_name}, {self.skill.skill_name}"

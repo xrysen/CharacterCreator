@@ -1,5 +1,16 @@
 from rest_framework import serializers
-from character.models import Race, Class, SubRace
+from character.models import Race, Class, SubRace, Skill
+
+class SkillSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Skill
+        fields = ['skill_name']
+
+class ClassSerializer(serializers.ModelSerializer):
+    class_skills = SkillSerializer(many=True, read_only=True)
+    class Meta:
+        model = Class
+        fields = '__all__'
 
 
 class SubRaceSerializer(serializers.ModelSerializer):
@@ -17,7 +28,4 @@ class RaceSerializer(serializers.ModelSerializer):
                   'race_dex_bonus', 'race_int_bonus', 'race_wis_bonus', 'race_cha_bonus', 'race_has_subrace', 'sub_races']
 
 
-class ClassSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Class
-        fields = '__all__'
+

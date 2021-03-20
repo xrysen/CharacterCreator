@@ -8,5 +8,4 @@ urlpatterns = [
   path('race/', RaceApiView.as_view()),
   path('class/', ClassApiView.as_view()),
   path('subrace/', SubRaceApiView.as_view()),
-  
 ]
