@@ -2,7 +2,7 @@
 
 ## About
 D&D Character Creator is a project I started to learn Python/Django.
-It's goal is to allow users to quickly roll new characters to use in any D&D Campaign.
+It's goal is to allow users to quickly roll new characters and generate a printable character sheet to use in any D&D Campaign.
 
 It is in the very early stages of development. 
 
