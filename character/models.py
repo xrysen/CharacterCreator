@@ -49,3 +49,16 @@ class Class(models.Model):
 
   def __str__(self):
     return self.class_name
+
+class Tool(models.Model):
+  tool_name = models.CharField(max_length=50)
+
+  def __str__(self):
+    return self.tool_name
+
+class Skill(models.Model):
+  skill_name = models.CharField(max_length=50)
+  skill_stat = models.CharField(max_length=10)
+
+  def __str__(self):
+    return self.skill_name
