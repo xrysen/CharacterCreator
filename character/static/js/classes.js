@@ -22,7 +22,13 @@ const showCinfo = (playerClass) => {
       <p class = "race-description">
         ${playerClass.class_description}
         <br /><br />
+        <strong>Hit Points</strong>
+        <br/>
         <strong>Hit Dice: </strong>1d${playerClass.class_hit_die} per ${playerClass.class_name} level
+        <br />
+        <strong>Hit Points at 1st Level:</strong> ${playerClass.class_first_hp} + Constitution Modifier
+        <br />
+        <strong>Hit Points at Higher Levels: </strong> 1d${playerClass.class_later_hp} (or ${playerClass.class_later_hp_avg}) + your Constitution modifier per ${playerClass.class_name} level after 1st
         <br /><br />
         <strong>Proficiencies</strong>
         <br />
