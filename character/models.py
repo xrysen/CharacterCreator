@@ -46,6 +46,7 @@ class Class(models.Model):
   class_save_throw2 = models.CharField(max_length=15)
   class_armor = models.TextField()
   class_weapons = models.TextField()
+  class_num_skills = models.IntegerField()
 
   def __str__(self):
     return self.class_name
