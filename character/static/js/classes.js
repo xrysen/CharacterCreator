@@ -22,7 +22,7 @@ const showCinfo = (playerClass) => {
       <p class = "race-description">
         ${playerClass.class_description}
         <br /><br />
-        <strong>Class Hit Die: </strong>1d${playerClass.class_hit_die}
+        <strong>Hit Dice: </strong>1d${playerClass.class_hit_die} per ${playerClass.class_name} level
         <br /><br />
         <strong>Proficiencies</strong>
         <br />
