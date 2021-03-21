@@ -41,6 +41,14 @@ class Skill(models.Model):
   def __str__(self):
     return self.skill_name
 
+class Tool(models.Model):
+  tool_name = models.CharField(max_length=100)
+  tool_cost = models.CharField(max_length=20)
+  tool_weight = models.IntegerField()
+
+  def __str__(self):
+    return self.tool_name
+
 class Class(models.Model):
   class_name = models.CharField(max_length=50)
   class_image = models.TextField()
