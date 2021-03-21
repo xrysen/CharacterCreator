@@ -4,7 +4,7 @@ from character.models import Race, Class, SubRace, Skill
 class SkillSerializer(serializers.ModelSerializer):
     class Meta:
         model = Skill
-        fields = ['skill_name']
+        fields = '__all__'
 
 class ClassSerializer(serializers.ModelSerializer):
     class_skills = SkillSerializer(many=True, read_only=True)

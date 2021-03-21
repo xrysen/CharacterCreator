@@ -30,17 +30,28 @@ const showCinfo = (playerClass) => {
         <br />
         <strong>Hit Points at Higher Levels: </strong> 1d${playerClass.class_later_hp} (or ${playerClass.class_later_hp_avg}) + your Constitution modifier per ${playerClass.class_name} level after 1st
         <br /><br />
-        <strong>Proficiencies</strong>
-        <br />
-        <strong>Armor:</strong> ${playerClass.class_armor}
-        <br />
-        <strong>Weapons: </strong>${playerClass.class_weapons}
-        <br />
-        <strong>Saving Throws: </strong>${playerClass.class_save_throw1}, ${playerClass.class_save_throw2} 
-      </p>
+          <strong>Proficiencies</strong>
+          <br />
+          <strong>Armor:</strong> ${playerClass.class_armor}
+          <br />
+          <strong>Weapons: </strong>${playerClass.class_weapons}
+          <br />
+          <strong>Saving Throws: </strong>${playerClass.class_save_throw1}, ${playerClass.class_save_throw2} 
+          <br />
+          <strong>Skills: </strong>Pick ${playerClass.class_num_skills} of <span id = "skills"></span>
+        
+        </p>
     </div>
     `
-  )
+  );
+
+  for (const skill of playerClass.class_skills) {
+    if (playerClass.class_skills.indexOf(skill) !== playerClass.class_skills.length-1)
+      $("#skills").append(` ${skill.skill_name}, `);
+    else
+      $("#skills").append(`and ${skill.skill_name}.`);
+  }
+
 }
 
 const showClassButtons = () => {
