@@ -45,6 +45,8 @@ const showCinfo = (playerClass) => {
     `
   );
 
+  $(".class-info").append(`<button class = "btn btn-primary btn-lg" id = "next-button">Next</button>`);
+
   for (const skill of playerClass.class_skills) {
     if (playerClass.class_skills.indexOf(skill) !== playerClass.class_skills.length-1)
       $("#skills").append(` ${skill.skill_name}, `);
@@ -56,9 +58,15 @@ const showCinfo = (playerClass) => {
 
 const showClassButtons = () => {
   $(".main-container").append('<div class = "class-container"></div>');
-  $(".class-container").append(
-    "<h3 class = 'h3 mob-3 font-weight-normal'>Choose Class: </h3>"
-  );
+  if (!subRaceSelected) {
+    $(".class-container").append(
+      `<h3 class = 'h3 mob-3 font-weight-normal'>Choose a Class for your ${raceSelected}: </h3>`
+    );
+  } else {
+    $(".class-container").append(
+      `<h3 class = 'h3 mob-3 font-weight-normal'>Choose a Class for your ${subRaceSelected}: </h3>`
+    );
+  }
   classData.then((classes) => {
     for (const playerClass of classes) {
       classInfo.push(playerClass);

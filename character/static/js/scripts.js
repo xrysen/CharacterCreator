@@ -1,5 +1,7 @@
 
   let raceInfo = [];
+  let raceSelected = "";
+  let subRaceSelected = 0;
 
   const getRaceData = () => {
     return fetch(RACE_ENDPOINT, {
@@ -99,6 +101,7 @@
               `
             );
             $(`#subrace-${subRace.id}`).on("click", () => {
+              subRaceSelected = subRace.sub_race_name;
               $(`.race-info`).append(
                 `
                 <p class = "race-description" id = "subrace-description">
@@ -152,6 +155,7 @@
           }
 
           $(`#race-${race.id}`).on("click", () => {
+            raceSelected = race.race_name;
             showRaceInfo(race);
             
           });
@@ -166,6 +170,7 @@
             `
           );
           $(`#race-${race.id}`).on("click", () => {
+            raceSelected = race.race_name;
             showRaceInfo(race);
             $(".race-info").append(`<button class = "btn btn-primary btn-lg" id = "next-button">Next</button>`);
             $("#next-button").on("click", () => {

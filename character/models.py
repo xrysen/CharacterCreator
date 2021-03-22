@@ -63,6 +63,7 @@ class Class(models.Model):
   class_weapons = models.TextField()
   class_num_skills = models.IntegerField()
   class_skills = models.ManyToManyField(Skill, related_name = "skill_list")
+  class_tools = models.ManyToManyField(Tool, related_name="tool_list")
 
   def __str__(self):
     return self.class_name
