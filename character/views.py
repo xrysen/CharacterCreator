@@ -6,6 +6,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status, generics
 from .serializers import RaceSerializer, ClassSerializer, SubRaceSerializer, SkillSerializer
+from django_filters.rest_framework import DjangoFilterBackend
 
 # Create your views here.
 def index(request):
@@ -40,13 +41,7 @@ class SubRaceApiView(APIView):
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 class RaceList(generics.ListAPIView):
+  queryset = Race.objects.all()
   serializer_class = RaceSerializer
-
-  def get_queryset(self):
-
-    queryset = Race.objects.all()
-    race_name = self.request.query_params.get('race_name', None)
-    if race_name is not None:
-      queryset = queryset.filter(race_name=race_name)
-    
-    return queryset
+  filter_backends = [DjangoFilterBackend]
+  filterset_fields = ['id', 'race_name']
