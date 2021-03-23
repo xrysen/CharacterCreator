@@ -1,4 +1,5 @@
 let classInfo = [];
+let skillsChosen = [];
 
 const getClassData = () => {
   return fetch(CLASS_ENDPOINT, {

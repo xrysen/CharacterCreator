@@ -37,6 +37,7 @@ class SubRace(models.Model):
 class Skill(models.Model):
   skill_name = models.CharField(max_length=50)
   skill_stat = models.CharField(max_length=10)
+  skill_url = models.TextField()
 
   def __str__(self):
     return self.skill_name
