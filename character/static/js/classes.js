@@ -57,39 +57,40 @@ const showCinfo = (playerClass) => {
     `
   );
 
-  $(".class-info").append(
-    `<button class = "btn btn-primary btn-lg" id = "next-button">Next</button>`
-  );
-
-
+  
+  
   for (const skill of playerClass.class_skills) {
     if (
       playerClass.class_skills.indexOf(skill) !==
       playerClass.class_skills.length - 1
-    )
+      )
       $("#skills").append(` <a href = "${skill.skill_url}" target="new">${skill.skill_name}</a>, `);
-    else $("#skills").append(`and <a href = "${skill.skill_url}" target="new">${skill.skill_name}.</a>`);
-  }
-
-  
-  // for (i = 1; i <= playerClass.class_num_skills; i++) {
-  //   $(".race-description").append(
-  //     `
-  //     <select name="skills" id = "choose-skills-${i}">
-  //     </select>
-  //     `
-  //   );
-  //   for (const skill of playerClass.class_skills) {
-  //     $(`#choose-skills-${i}`).append(
-  //       `<option value="${skill.skill_name}">${skill.skill_name}</option>`
-  //     );
-  //   }
-  // }
+      else $("#skills").append(`and <a href = "${skill.skill_url}" target="new">${skill.skill_name}.</a>`);
+    }
+    
+    
+    for (i = 1; i <= playerClass.class_num_skills; i++) {
+      $(".class-info").append(
+        `
+        <select name="skills" id = "choose-skills-${i}">
+        <option value="" disabled selected>- Select Skill -</option>
+        </select>
+        `
+        );
+        for (const skill of playerClass.class_skills) {
+          $(`#choose-skills-${i}`).append(
+            `<option value="${skill.skill_name}">${skill.skill_name}</option>`
+            );
+          }
+        }
+        
+        $(".class-info").append(
+          `<br /><br /><button class = "btn btn-primary btn-lg" id = "next-button">Next</button><br />`
+        );
 
   $("#next-button").on('click', () => {
     selectedClass = playerClass.class_name;
     emptyClassContainer();
-    showDetails(selectedClass);
   })
 };
 
