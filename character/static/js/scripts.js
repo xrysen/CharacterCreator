@@ -9,6 +9,12 @@
     }).then((res) => res.json());
   };
 
+  const getRaceDataByName = (raceName) => {
+    return fetch(`${RACE_ENDPOINT}?race_name=${raceName}`, {
+      mode: "cors",
+    }).then((res) => res.json());
+  };
+
   const raceData = getRaceData();
 
   const removeRaceInfo = () => {
@@ -183,5 +189,4 @@
     });
   };
 
-  showRaceButtons();
-
+  //showRaceButtons();

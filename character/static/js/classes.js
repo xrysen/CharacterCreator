@@ -98,6 +98,7 @@ const showCinfo = (playerClass) => {
         alert("Please choose a skill");
     }
     emptyClassContainer();
+    scoreCalcTemplate();
   })
 };
 
