@@ -55,8 +55,8 @@ const showCinfo = (playerClass) => {
       playerClass.class_skills.indexOf(skill) !==
       playerClass.class_skills.length - 1
     )
-      $("#skills").append(` ${skill.skill_name}, `);
-    else $("#skills").append(`and ${skill.skill_name}.`);
+      $("#skills").append(` <a href = "${skill.skill_url}" target="new">${skill.skill_name}</a>, `);
+    else $("#skills").append(`and <a href = "${skill.skill_url}" target="new">${skill.skill_name}.</a>`);
   }
 
   
