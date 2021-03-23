@@ -10,7 +10,7 @@ const classData = getClassData();
 
 const removeCInfo = () => {
   $(".class-info").remove();
-}
+};
 
 const showCinfo = (playerClass) => {
   removeCInfo();
@@ -39,22 +39,40 @@ const showCinfo = (playerClass) => {
           <strong>Saving Throws: </strong>${playerClass.class_save_throw1}, ${playerClass.class_save_throw2} 
           <br />
           <strong>Skills: </strong>Pick ${playerClass.class_num_skills} of <span id = "skills"></span>
-        
+          <br />
         </p>
     </div>
     `
   );
 
-  $(".class-info").append(`<button class = "btn btn-primary btn-lg" id = "next-button">Next</button>`);
+  $(".class-info").append(
+    `<button class = "btn btn-primary btn-lg" id = "next-button">Next</button>`
+  );
 
   for (const skill of playerClass.class_skills) {
-    if (playerClass.class_skills.indexOf(skill) !== playerClass.class_skills.length-1)
+    if (
+      playerClass.class_skills.indexOf(skill) !==
+      playerClass.class_skills.length - 1
+    )
       $("#skills").append(` ${skill.skill_name}, `);
-    else
-      $("#skills").append(`and ${skill.skill_name}.`);
+    else $("#skills").append(`and ${skill.skill_name}.`);
   }
 
-}
+  
+  for (i = 1; i <= playerClass.class_num_skills; i++) {
+    $(".race-description").append(
+      `
+      <select name="skills" id = "choose-skills-${i}">
+      </select>
+      `
+    );
+    for (const skill of playerClass.class_skills) {
+      $(`#choose-skills-${i}`).append(
+        `<option value="${skill.skill_name}">${skill.skill_name}</option>`
+      );
+    }
+  }
+};
 
 const showClassButtons = () => {
   $(".main-container").append('<div class = "class-container"></div>');
@@ -79,10 +97,10 @@ const showClassButtons = () => {
         </div>
         `
       );
-      
+
       $(`#class-${playerClass.id}`).on("click", () => {
         showCinfo(playerClass);
-      })
+      });
     }
   });
 };
