@@ -8,11 +8,21 @@ const getClassData = () => {
   }).then((res) => res.json());
 };
 
+const getClassByName = (className) => {
+  return fetch(`${CLASS_ENDPOINT}?class_name=${className}`, {
+    mode: "cors",
+  }).then((res) => res.json(res));
+}
+
 const classData = getClassData();
 
 const removeCInfo = () => {
   $(".class-info").remove();
 };
+
+const emptyClassContainer = () => {
+  $(".class-container").remove();
+}
 
 const showCinfo = (playerClass) => {
   removeCInfo();
@@ -78,7 +88,8 @@ const showCinfo = (playerClass) => {
 
   $("#next-button").on('click', () => {
     selectedClass = playerClass.class_name;
-    console.log(selectedClass, raceSelected);
+    emptyClassContainer();
+    showDetails(selectedClass);
   })
 };
 
