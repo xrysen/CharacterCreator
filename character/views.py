@@ -45,3 +45,9 @@ class RaceList(generics.ListAPIView):
   serializer_class = RaceSerializer
   filter_backends = [DjangoFilterBackend]
   filterset_fields = ['id', 'race_name']
+
+class ClassList(generics.ListAPIView):
+  queryset = Class.objects.all()
+  serializer_class = ClassSerializer
+  filter_backends = [DjangoFilterBackend]
+  filterset_fields = ['id', 'class_name']

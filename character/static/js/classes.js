@@ -1,5 +1,6 @@
 let classInfo = [];
-let skillsChosen = [];
+let selectSkills = [];
+let selectedClass = "";
 
 const getClassData = () => {
   return fetch(CLASS_ENDPOINT, {
@@ -50,6 +51,7 @@ const showCinfo = (playerClass) => {
     `<button class = "btn btn-primary btn-lg" id = "next-button">Next</button>`
   );
 
+
   for (const skill of playerClass.class_skills) {
     if (
       playerClass.class_skills.indexOf(skill) !==
@@ -60,19 +62,24 @@ const showCinfo = (playerClass) => {
   }
 
   
-  for (i = 1; i <= playerClass.class_num_skills; i++) {
-    $(".race-description").append(
-      `
-      <select name="skills" id = "choose-skills-${i}">
-      </select>
-      `
-    );
-    for (const skill of playerClass.class_skills) {
-      $(`#choose-skills-${i}`).append(
-        `<option value="${skill.skill_name}">${skill.skill_name}</option>`
-      );
-    }
-  }
+  // for (i = 1; i <= playerClass.class_num_skills; i++) {
+  //   $(".race-description").append(
+  //     `
+  //     <select name="skills" id = "choose-skills-${i}">
+  //     </select>
+  //     `
+  //   );
+  //   for (const skill of playerClass.class_skills) {
+  //     $(`#choose-skills-${i}`).append(
+  //       `<option value="${skill.skill_name}">${skill.skill_name}</option>`
+  //     );
+  //   }
+  // }
+
+  $("#next-button").on('click', () => {
+    selectedClass = playerClass.class_name;
+    console.log(selectedClass, raceSelected);
+  })
 };
 
 const showClassButtons = () => {
