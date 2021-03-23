@@ -1,5 +1,5 @@
 let classInfo = [];
-let selectSkills = [];
+let selectedSkills = [];
 let selectedClass = "";
 
 const getClassData = () => {
@@ -69,7 +69,7 @@ const showCinfo = (playerClass) => {
     }
     
     
-    for (i = 1; i <= playerClass.class_num_skills; i++) {
+    for (let i = 1; i <= playerClass.class_num_skills; i++) {
       $(".class-info").append(
         `
         <select name="skills" id = "choose-skills-${i}">
@@ -85,11 +85,18 @@ const showCinfo = (playerClass) => {
         }
         
         $(".class-info").append(
-          `<br /><br /><button class = "btn btn-primary btn-lg" id = "next-button">Next</button><br />`
+          `<br /><br /><button class = "btn btn-primary btn-lg" id = "next-button">Next</button>`
         );
 
   $("#next-button").on('click', () => {
     selectedClass = playerClass.class_name;
+    for (let i = 1; i <= playerClass.class_num_skills; i++) {
+      let skillSelected = $(`#choose-skills-${i}`).val();
+      if (skillSelected) // Fix
+        selectedSkills.push(skillSelected);
+      else
+        alert("Please choose a skill");
+    }
     emptyClassContainer();
   })
 };
