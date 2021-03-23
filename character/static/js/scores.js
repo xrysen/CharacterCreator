@@ -1,6 +1,6 @@
-raceSelected = "Elf";
+raceSelected = "Dwarf";
 selectedClass = "Paladin";
-subRaceSelected = 1;
+subRaceSelected = "Hill Dwarf";
 
 const scoreCalcTemplate = () => {
   let race = "";
@@ -19,12 +19,42 @@ const scoreCalcTemplate = () => {
     `
   );
 
-  statTable(1, "Strength", raceSelected, "race_str_bonus", "sub_race_str_bonus");
-  statTable(1, "Dexterity", raceSelected, "race_dex_bonus", "sub_race_dex_bonus");
-  statTable(1, "Constitution", raceSelected, "race_con_bonus", "sub_race_con_bonus");
-  statTable(2, "Intelligence", raceSelected, "race_int_bonus", "sub_race_int_bonus");
+  statTable(
+    1,
+    "Strength",
+    raceSelected,
+    "race_str_bonus",
+    "sub_race_str_bonus"
+  );
+  statTable(
+    1,
+    "Dexterity",
+    raceSelected,
+    "race_dex_bonus",
+    "sub_race_dex_bonus"
+  );
+  statTable(
+    1,
+    "Constitution",
+    raceSelected,
+    "race_con_bonus",
+    "sub_race_con_bonus"
+  );
+  statTable(
+    2,
+    "Intelligence",
+    raceSelected,
+    "race_int_bonus",
+    "sub_race_int_bonus"
+  );
   statTable(2, "Wisdom", raceSelected, "race_wis_bonus", "sub_race_wis_bonus");
-  statTable(2, "Charisma", raceSelected, "race_cha_bonus", "sub_race_cha_bonus");
+  statTable(
+    2,
+    "Charisma",
+    raceSelected,
+    "race_cha_bonus",
+    "sub_race_cha_bonus"
+  );
 };
 
 const statTable = (group, statName, race, statAbbr, subStatAbbr) => {
@@ -32,8 +62,12 @@ const statTable = (group, statName, race, statAbbr, subStatAbbr) => {
   raceData.then((res) => {
     let subRaceStat = 0;
     if (res[0].race_has_subrace) {
-      subRaceStat = res[0].sub_races[subRaceSelected][subStatAbbr];
-    } 
+      for (let i = 0; i < res[0].sub_races.length; i++) {
+        if (res[0].sub_races[i].sub_race_name === subRaceSelected) {
+          subRaceStat = res[0].sub_races[i][subStatAbbr];
+        }
+      }
+    }
     $(`#stat-cards-${group}`).append(
       `
       <div class = "card">
