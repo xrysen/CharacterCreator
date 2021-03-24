@@ -55,7 +55,6 @@ p {
 }
 
 .dice-group {
-  display: inline-block;
   text-align: center;
   margin-top: 20px;
   background-color: white;
@@ -63,4 +62,10 @@ p {
   height: 150px;
   padding-right: 10px;
   border-radius: 5px;
+}
+
+.dice-group-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }

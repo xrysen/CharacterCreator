@@ -107,29 +107,31 @@ const statTable = (group, statName, race, statAbbr, subStatAbbr) => {
 const rollBlock = () => {
   $(".main-container").append(
     `
-    <div class = "dice-group" id = "dice-group-1">
-      <p id = "dice-group-p-1">--</p>
-      <button class = "btn btn-primary" id="dice-btn-1">Roll</button>
-    </div>
-    <div class = "dice-group" id = "dice-group-2">
-      <p id = "dice-group-p-2">--</p>
-      <button class = "btn btn-primary" id="dice-btn-2">Roll</button>
-    </div>
-    <div class = "dice-group" id = "dice-group-3">
-      <p id = "dice-group-p-3">--</p>
-      <button class = "btn btn-primary" id="dice-btn-3">Roll</button>
-    </div>
-    <div class = "dice-group" id = "dice-group-4">
-      <p id = "dice-group-p-4">--</p>
-      <button class = "btn btn-primary" id="dice-btn-4">Roll</button>
-    </div>
-    <div class = "dice-group" id = "dice-group-5">
-      <p id = "dice-group-p-5">--</p>
-      <button class = "btn btn-primary" id="dice-btn-5">Roll</button>
-    </div>
-    <div class = "dice-group"id = "dice-group-6">
-      <p id = "dice-group-p-6">--</p>
-      <button class = "btn btn-primary" id="dice-btn-6">Roll</button>
+    <div class = "dice-group-container">
+      <div class = "dice-group" id = "dice-group-1">
+        <p id = "dice-group-p-1">--</p>
+        <button class = "btn btn-primary" id="dice-btn-1">Roll</button>
+      </div>
+      <div class = "dice-group" id = "dice-group-2">
+        <p id = "dice-group-p-2">--</p>
+        <button class = "btn btn-primary" id="dice-btn-2">Roll</button>
+      </div>
+      <div class = "dice-group" id = "dice-group-3">
+        <p id = "dice-group-p-3">--</p>
+        <button class = "btn btn-primary" id="dice-btn-3">Roll</button>
+      </div>
+      <div class = "dice-group" id = "dice-group-4">
+        <p id = "dice-group-p-4">--</p>
+        <button class = "btn btn-primary" id="dice-btn-4">Roll</button>
+      </div>
+      <div class = "dice-group" id = "dice-group-5">
+        <p id = "dice-group-p-5">--</p>
+        <button class = "btn btn-primary" id="dice-btn-5">Roll</button>
+      </div>
+      <div class = "dice-group"id = "dice-group-6">
+        <p id = "dice-group-p-6">--</p>
+        <button class = "btn btn-primary" id="dice-btn-6">Roll</button>
+      </div>
     </div>
     `
   )
@@ -160,19 +162,18 @@ rollBlock();
 
 for (let i = 1; i <=6; i++) {
   $(`#dice-btn-${i}`).on("click", () => {
-    $(`#dice-group-p-${i}`).html(`<strong>${statRoll()}</strong> <br />${lastRoll}`);
+    $(`#dice-group-p-${i}`).html(`<strong>${statRoll()}</strong> <br />${lastRoll.slice(0, 3)} <strike>${lastRoll.slice(3)}</strike>`);
     $(`#dice-btn-${i}`).remove();
-    //$(`#dice-group-${i}`).text(`${lastRoll}`);
     $(`#dice-group-${i}`).append(
       `
-      <select>
+      <select id = "stat-select-${i}">
         <option value="" disabled selected>--</option>
-        <option value = "str">Strength</option>
-        <option value = "dex">Dexterity</option>
-        <option value = "con">Constitution</option>
-        <option value = "int">Intelligence</option>
-        <option value = "wis">Wisdom</option>
-        <option value = "cha">Charisma</option>
+        <option value = "str">STR</option>
+        <option value = "dex">DEX</option>
+        <option value = "con">CON</option>
+        <option value = "int">INT</option>
+        <option value = "wis">WIS</option>
+        <option value = "cha">CHA</option>
       </select>
       `
     )
