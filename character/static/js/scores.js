@@ -4,6 +4,15 @@ subRaceSelected = "Mountain Dwarf";
 
 let lastRoll = [];
 
+let baseStats = {
+  str: 0,
+  dex: 0,
+  con: 0,
+  int: 0,
+  wis: 0,
+  cha: 0
+};
+
 const scoreCalcTemplate = () => {
   let race = "";
   if (subRaceSelected) {
@@ -61,6 +70,7 @@ const scoreCalcTemplate = () => {
 
 const statTable = (group, statName, race, statAbbr, subStatAbbr) => {
   let totalScore = 0;
+  let baseStat = statAbbr.slice(5,8);
   const raceData = getRaceDataByName(race);
   raceData.then((res) => {
     let subRaceStat = 0;
@@ -89,7 +99,7 @@ const statTable = (group, statName, race, statAbbr, subStatAbbr) => {
             </tr>
             <tr>
               <td>Base Score: </td>
-              <td> -- </td>
+              <td> ${baseStats[baseStat] ? baseStats[baseStat] : "--"} </td>
             </tr>
             <tr>
               <td>Racial Bonus: </td>
@@ -134,12 +144,12 @@ const rollBlock = () => {
       </div>
     </div>
     `
-  )
-}
+  );
+};
 
 const rollDice = () => {
   return Math.floor(Math.random() * 6) + 1;
-}
+};
 
 const statRoll = () => {
   let total = 0;
@@ -155,19 +165,36 @@ const statRoll = () => {
   console.log(lastRoll);
   console.log(total);
   return total;
-}
+};
 
 scoreCalcTemplate();
 rollBlock();
 
-for (let i = 1; i <=6; i++) {
+const addSelectListeners = (id) => {
+  $(`#stat-select-${id}`).on("change", function() {
+    for (let i = 1; i <=6; i++) {
+      console.log($(`#stat-select-${id}`).val());
+      if (!$(`#stat-select-${i}`).val()) {
+        return;
+      }
+    }
+    $(".main-container").append(`<button class = "btn btn-primary" style="margin-top: 20px">Apply</button>`);
+  });
+}
+
+for (let i = 1; i <= 6; i++) {
   $(`#dice-btn-${i}`).on("click", () => {
-    $(`#dice-group-p-${i}`).html(`<strong>${statRoll()}</strong> <br />${lastRoll.slice(0, 3)} <strike>${lastRoll.slice(3)}</strike>`);
+    $(`#dice-group-p-${i}`).html(
+      `<strong>${statRoll()}</strong> <br />${lastRoll.slice(
+        0,
+        3
+      )} <strike>${lastRoll.slice(3)}</strike>`
+    );
     $(`#dice-btn-${i}`).remove();
     $(`#dice-group-${i}`).append(
       `
       <select id = "stat-select-${i}">
-        <option value="" disabled selected>--</option>
+        <option value="">--</option>
         <option value = "str">STR</option>
         <option value = "dex">DEX</option>
         <option value = "con">CON</option>
@@ -176,7 +203,7 @@ for (let i = 1; i <=6; i++) {
         <option value = "cha">CHA</option>
       </select>
       `
-    )
-  })
+    );
+    addSelectListeners(i);
+  });
 }
-
