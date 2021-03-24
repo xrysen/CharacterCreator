@@ -1,6 +1,8 @@
 raceSelected = "Dwarf";
 selectedClass = "Paladin";
-subRaceSelected = "Hill Dwarf";
+subRaceSelected = "Mountain Dwarf";
+
+let lastRoll = [];
 
 const scoreCalcTemplate = () => {
   let race = "";
@@ -58,6 +60,7 @@ const scoreCalcTemplate = () => {
 };
 
 const statTable = (group, statName, race, statAbbr, subStatAbbr) => {
+  let totalScore = 0;
   const raceData = getRaceDataByName(race);
   raceData.then((res) => {
     let subRaceStat = 0;
@@ -68,36 +71,111 @@ const statTable = (group, statName, race, statAbbr, subStatAbbr) => {
         }
       }
     }
+    totalScore = res[0][statAbbr] + subRaceStat;
     $(`#stat-cards-${group}`).append(
       `
       <div class = "card">
-      <div class = "card-body">
-      <h5 class = "card-title">${statName}</h5>
-      <table class = "table">
-      <tbody>
-      <tr>
-      <td>Total Score: </td>
-      <td> -- </td>
-      </tr>
-      <tr>
-      <td>Modifier: </td>
-      <td> -- </td>
-      </tr>
-      <tr>
-      <td>Base Score: </td>
-      <td> -- </td>
-      </tr>
-      <tr>
-      <td>Racial Bonus: </td>
-      <td> ${res[0][statAbbr] + subRaceStat} </td>
-      </tr>
-      </tbody>
-      </table>
-      </div>
+        <div class = "card-body">
+          <h5 class = "card-title">${statName}</h5>
+          <table class = "table">
+          <tbody>
+            <tr>
+              <td>Total Score: </td>
+              <td> ${totalScore} </td>
+            </tr>
+            <tr>
+              <td>Modifier: </td>
+              <td> -- </td>
+            </tr>
+            <tr>
+              <td>Base Score: </td>
+              <td> -- </td>
+            </tr>
+            <tr>
+              <td>Racial Bonus: </td>
+              <td> ${res[0][statAbbr] + subRaceStat} </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
       `
     );
   });
 };
 
+const rollBlock = () => {
+  $(".main-container").append(
+    `
+    <div class = "dice-group" id = "dice-group-1">
+      <p id = "dice-group-p-1">--</p>
+      <button class = "btn btn-primary" id="dice-btn-1">Roll</button>
+    </div>
+    <div class = "dice-group" id = "dice-group-2">
+      <p id = "dice-group-p-2">--</p>
+      <button class = "btn btn-primary" id="dice-btn-2">Roll</button>
+    </div>
+    <div class = "dice-group" id = "dice-group-3">
+      <p id = "dice-group-p-3">--</p>
+      <button class = "btn btn-primary" id="dice-btn-3">Roll</button>
+    </div>
+    <div class = "dice-group" id = "dice-group-4">
+      <p id = "dice-group-p-4">--</p>
+      <button class = "btn btn-primary" id="dice-btn-4">Roll</button>
+    </div>
+    <div class = "dice-group" id = "dice-group-5">
+      <p id = "dice-group-p-5">--</p>
+      <button class = "btn btn-primary" id="dice-btn-5">Roll</button>
+    </div>
+    <div class = "dice-group"id = "dice-group-6">
+      <p id = "dice-group-p-6">--</p>
+      <button class = "btn btn-primary" id="dice-btn-6">Roll</button>
+    </div>
+    `
+  )
+}
+
+const rollDice = () => {
+  return Math.floor(Math.random() * 6) + 1;
+}
+
+const statRoll = () => {
+  let total = 0;
+  lastRoll = [];
+  lastRoll.push(rollDice());
+  lastRoll.push(rollDice());
+  lastRoll.push(rollDice());
+  lastRoll.push(rollDice());
+  lastRoll = lastRoll.sort().reverse();
+  for (let i = 0; i < lastRoll.length - 1; i++) {
+    total += lastRoll[i];
+  }
+  console.log(lastRoll);
+  console.log(total);
+  return total;
+}
+
 scoreCalcTemplate();
+rollBlock();
+
+for (let i = 1; i <=6; i++) {
+  $(`#dice-btn-${i}`).on("click", () => {
+    $(`#dice-group-p-${i}`).html(`<strong>${statRoll()}</strong> <br />${lastRoll}`);
+    $(`#dice-btn-${i}`).remove();
+    //$(`#dice-group-${i}`).text(`${lastRoll}`);
+    $(`#dice-group-${i}`).append(
+      `
+      <select>
+        <option value="" disabled selected>--</option>
+        <option value = "str">Strength</option>
+        <option value = "dex">Dexterity</option>
+        <option value = "con">Constitution</option>
+        <option value = "int">Intelligence</option>
+        <option value = "wis">Wisdom</option>
+        <option value = "cha">Charisma</option>
+      </select>
+      `
+    )
+  })
+}
+
