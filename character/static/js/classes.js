@@ -99,6 +99,7 @@ const showCinfo = (playerClass) => {
     }
     emptyClassContainer();
     scoreCalcTemplate();
+    rollBlock();
   })
 };
 

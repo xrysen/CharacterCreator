@@ -156,6 +156,32 @@ const rollBlock = () => {
     </div>
     `
   );
+  for (let i = 1; i <= 6; i++) {
+    $(`#dice-btn-${i}`).on("click", () => {
+      $(`#dice-group-p-${i}`).html(
+        `<strong>${statRoll(`total${i}`)}</strong> <br />${lastRoll.slice(
+          0,
+          3
+        )} <strike>${lastRoll.slice(3)}</strike>`
+      );
+      $(`#dice-btn-${i}`).remove();
+      $(`#dice-group-${i}`).append(
+        `
+        <select id = "stat-select-${i}">
+          <option value="">--</option>
+          <option value = "str">STR</option>
+          <option value = "dex">DEX</option>
+          <option value = "con">CON</option>
+          <option value = "int">INT</option>
+          <option value = "wis">WIS</option>
+          <option value = "cha">CHA</option>
+        </select>
+        `
+      );
+      addSelectListeners(i);
+    });
+  }
+  
 };
 
 const rollDice = () => {
@@ -272,28 +298,4 @@ const addSelectListeners = (id) => {
   });
 }
 
-for (let i = 1; i <= 6; i++) {
-  $(`#dice-btn-${i}`).on("click", () => {
-    $(`#dice-group-p-${i}`).html(
-      `<strong>${statRoll(`total${i}`)}</strong> <br />${lastRoll.slice(
-        0,
-        3
-      )} <strike>${lastRoll.slice(3)}</strike>`
-    );
-    $(`#dice-btn-${i}`).remove();
-    $(`#dice-group-${i}`).append(
-      `
-      <select id = "stat-select-${i}">
-        <option value="">--</option>
-        <option value = "str">STR</option>
-        <option value = "dex">DEX</option>
-        <option value = "con">CON</option>
-        <option value = "int">INT</option>
-        <option value = "wis">WIS</option>
-        <option value = "cha">CHA</option>
-      </select>
-      `
-    );
-    addSelectListeners(i);
-  });
-}
+
