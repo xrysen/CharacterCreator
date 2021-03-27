@@ -75,3 +75,77 @@ input.misc {
   border: none;
   border-bottom: 1px solid #ddd;
 }
+
+main {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+main > section {
+  width: 32%;
+  display: flex;
+  flex-direction: column;
+}
+
+section.attributes {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+div.scores {
+  width: 101px;
+  background-color: #bbb;
+  border-radius: 10px;
+  padding-bottom: 10px;
+}
+
+label.score {
+  font-size: 8px;
+  font-weight: bold;
+}
+
+ul.scores {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+}
+
+li.score {
+  height: 80px;
+  width: 70px;
+  background-color: white;
+  border: 1px solid black;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+}
+
+input.score {
+  width: 100%;
+  border: 0;
+  padding: 0;
+  text-align: center;
+  font-size: 40px;
+  padding: 2px 0px 0px 0px;
+  background-color: white;
+}
+
+div.modifier {
+  margin-top: 3px;
+}
+
+input.modifier {
+  background-color: white;
+  width: 30px;
+  height: 20px;
+  border: 1px inset black;
+  margin: -1px;
+  text-align: center;
+  border-radius: 40px;
+}
