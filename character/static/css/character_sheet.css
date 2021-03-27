@@ -1,0 +1,77 @@
+.charsheet {
+  width: 800px;
+  right: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 10px;
+}
+
+header {
+  display: flex;
+  align-content: stretch;
+  align-items: stretch;
+}
+
+section.charname {
+  border: 1px solid black;
+  border-right: 0;
+  border-radius: 10px;
+  padding: 5px 0;
+  background-color: #eee;
+  width: 30%;
+  display: flex;
+  flex-direction: column-reverse;
+  bottom: 0;
+  top: 0;
+  margin: auto;
+}
+
+input.charname {
+  padding: 0.5em;
+  margin: 5px;
+  border: 0;
+}
+
+label.charname {
+  padding-left: 1em;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style-image: none;
+  display: block;
+}
+
+section.misc {
+  width: 70%;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+ul.misc {
+  padding: 10px 0px 5px 0px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+li.misc {
+  width: 33.33333%;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+label.misc {
+  margin-bottom: 5px;
+}
+
+input.misc {
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
