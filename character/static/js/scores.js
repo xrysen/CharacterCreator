@@ -12,7 +12,7 @@ let baseStats = {
   con: 0,
   int: 0,
   wis: 0,
-  cha: 0
+  cha: 0,
 };
 
 let totalRolls = {
@@ -21,7 +21,7 @@ let totalRolls = {
   total3: 0,
   total4: 0,
   total5: 0,
-  total6: 0
+  total6: 0,
 };
 
 let statTotals = {
@@ -30,8 +30,17 @@ let statTotals = {
   conTotal: 0,
   intTotal: 0,
   wisTotal: 0,
-  chaTota: 0
-}
+  chaTota: 0,
+};
+
+let statModifiers = {
+  strMod: 0,
+  dexMod: 0,
+  conMod: 0,
+  intMod: 0,
+  wisMod: 0,
+  chaMod: 0,
+};
 
 const scoreCalcTemplate = () => {
   let race = "";
@@ -90,7 +99,7 @@ const scoreCalcTemplate = () => {
 
 const statTable = (group, statName, race, statAbbr, subStatAbbr) => {
   let totalScore = 0;
-  let baseStat = statAbbr.slice(5,8);
+  let baseStat = statAbbr.slice(5, 8);
   const raceData = getRaceDataByName(race);
   raceData.then((res) => {
     if (res[0].race_has_subrace) {
@@ -119,7 +128,9 @@ const statTable = (group, statName, race, statAbbr, subStatAbbr) => {
             </tr>
             <tr>
               <td>Base Score: </td>
-              <td id = "${baseStat}"> ${baseStats[baseStat] ? baseStats[baseStat] : "--"} </td>
+              <td id = "${baseStat}"> ${
+        baseStats[baseStat] ? baseStats[baseStat] : "--"
+      } </td>
             </tr>
             <tr>
               <td>Racial Bonus: </td>
@@ -190,7 +201,6 @@ const rollBlock = () => {
       addSelectListeners(i);
     });
   }
-  
 };
 
 const rollDice = () => {
@@ -217,7 +227,7 @@ scoreCalcTemplate();
 rollBlock();
 
 const calculateModifier = (score) => {
-  switch(score) {
+  switch (score) {
     case 1:
       return "-5";
       break;
@@ -270,7 +280,7 @@ const calculateModifier = (score) => {
       return "+7";
       break;
     case 26:
-    case 27: 
+    case 27:
       return "+8";
       break;
     case 28:
@@ -281,36 +291,42 @@ const calculateModifier = (score) => {
       return "+10";
       break;
   }
-}
+};
 
 const addSelectListeners = (id) => {
-  $(`#stat-select-${id}`).on("change", function() {
-    for (let i = 1; i <=6; i++) {
+  $(`#stat-select-${id}`).on("change", function () {
+    for (let i = 1; i <= 6; i++) {
       console.log($(`#stat-select-${id}`).val());
       if (!$(`#stat-select-${i}`).val()) {
         return;
       }
     }
-    $(".main-container").append(`<button class = "btn btn-primary" id = "apply-score" style="margin-top: 20px">Apply</button>`);
+    $(".main-container").append(
+      `<button class = "btn btn-primary" id = "apply-score" style="margin-top: 20px">Apply</button>`
+    );
     $("#apply-score").on("click", () => {
       console.log("Applying scores");
-      for (let i = 1; i <=6; i++) {
+      for (let i = 1; i <= 6; i++) {
         selectedStat = $(`#stat-select-${i}`).val();
         currentTotal = $(`#${selectedStat}-total`).text();
         baseStats[selectedStat] = totalRolls[`total${i}`];
-        statTotals[`${selectedStat}Total`] = Number(currentTotal) + baseStats[selectedStat];
+        statTotals[`${selectedStat}Total`] =
+          Number(currentTotal) + baseStats[selectedStat];
         $(`#${selectedStat}`).text(totalRolls[`total${i}`]);
-        $(`#${selectedStat}-total`).text(totalRolls[`total${i}`] + Number(currentTotal));
+        $(`#${selectedStat}-total`).text(
+          totalRolls[`total${i}`] + Number(currentTotal)
+        );
         currentTotal = Number($(`#${selectedStat}-total`).text());
         $(`#${selectedStat}-mod`).text(calculateModifier(currentTotal));
+        statModifiers[`${selectedStat}Mod`] = calculateModifier(currentTotal);
       }
       $("#apply-score").remove();
-      $(".main-container").append(`<button class = "btn btn-primary" id = "generate-sheet" style = "margin-top: 20px;">Generate Character Sheet</button>`);
+      $(".main-container").append(
+        `<button class = "btn btn-primary" id = "generate-sheet" style = "margin-top: 20px;">Generate Character Sheet</button>`
+      );
       $(".main-container").remove();
       $("#bs").remove(); // Remove bootstrap
       generateCharacterSheet();
-    })
+    });
   });
-}
-
-
+};

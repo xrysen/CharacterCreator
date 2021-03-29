@@ -48,7 +48,7 @@ const generateCharacterSheet = () => {
                     <label for="Strengthscore">Strength</label><input name="Strengthscore" placeholder="10" value="${statTotals.strTotal}" />
                   </div>
                   <div class="modifier">
-                    <input name="Strengthmod" placeholder="+0" />
+                    <input name="Strengthmod" placeholder="+0" value="${statModifiers.strMod}"/>
                   </div>
                 </li>
                 <li>
@@ -56,7 +56,7 @@ const generateCharacterSheet = () => {
                     <label for="Dexterityscore">Dexterity</label><input name="Dexterityscore" placeholder="10" value="${statTotals.dexTotal}" />
                   </div>
                   <div class="modifier">
-                    <input name="Dexteritymod" placeholder="+0" />
+                    <input name="Dexteritymod" placeholder="+0" value="${statModifiers.dexMod}"/>
                   </div>
                 </li>
                 <li>
@@ -64,7 +64,7 @@ const generateCharacterSheet = () => {
                     <label for="Constitutionscore">Constitution</label><input name="Constitutionscore" placeholder="10" value="${statTotals.conTotal}"/>
                   </div>
                   <div class="modifier">
-                    <input name="Constitutionmod" placeholder="+0" />
+                    <input name="Constitutionmod" placeholder="+0" value="${statModifiers.conMod}"/>
                   </div>
                 </li>
                 <li>
@@ -72,7 +72,7 @@ const generateCharacterSheet = () => {
                     <label for="Wisdomscore">Wisdom</label><input name="Wisdomscore" placeholder="10" value="${statTotals.wisTotal}"/>
                   </div>
                   <div class="modifier">
-                    <input name="Wisdommod" placeholder="+0" />
+                    <input name="Wisdommod" placeholder="+0" value="${statModifiers.wisMod}"/>
                   </div>
                 </li>
                 <li>
@@ -80,7 +80,7 @@ const generateCharacterSheet = () => {
                     <label for="Intelligencescore">Intelligence</label><input name="Intelligencescore" placeholder="10"  value="${statTotals.intTotal}"/>
                   </div>
                   <div class="modifier">
-                    <input name="Intelligencemod" placeholder="+0" />
+                    <input name="Intelligencemod" placeholder="+0" value="${statModifiers.intMod}"/>
                   </div>
                 </li>
                 <li>
@@ -88,7 +88,7 @@ const generateCharacterSheet = () => {
                     <label for="Charismascore">Charisma</label><input name="Charismascore" placeholder="10" value="${statTotals.chaTotal}"/>
                   </div>
                   <div class="modifier">
-                    <input name="Charismamod" placeholder="+0" />
+                    <input name="Charismamod" placeholder="+0" value="${statModifiers.chaMod}"/>
                   </div>
                 </li>
               </ul>
@@ -109,22 +109,22 @@ const generateCharacterSheet = () => {
               <div class="saves list-section box">
                 <ul>
                   <li>
-                    <label for="Strength-save">Strength</label><input name="Strength-save" placeholder="+0" type="text" /><input name="Strength-save-prof" type="checkbox" />
+                    <label for="Strength-save">Strength</label><input name="Strength-save" placeholder="+0" type="text" value="${statModifiers.strMod}"/><input name="Strength-save-prof" type="checkbox" />
                   </li>
                   <li>
-                    <label for="Dexterity-save">Dexterity</label><input name="Dexterity-save" placeholder="+0" type="text" /><input name="Dexterity-save-prof" type="checkbox" />
+                    <label for="Dexterity-save">Dexterity</label><input name="Dexterity-save" placeholder="+0" type="text" value="${statModifiers.dexMod}"/><input name="Dexterity-save-prof" type="checkbox" />
                   </li>
                   <li>
-                    <label for="Constitution-save">Constitution</label><input name="Constitution-save" placeholder="+0" type="text" /><input name="Constitution-save-prof" type="checkbox" />
+                    <label for="Constitution-save">Constitution</label><input name="Constitution-save" placeholder="+0" type="text" value="${statModifiers.conMod}"/><input name="Constitution-save-prof" type="checkbox" />
                   </li>
                   <li>
-                    <label for="Wisdom-save">Wisdom</label><input name="Wisdom-save" placeholder="+0" type="text" /><input name="Wisdom-save-prof" type="checkbox" />
+                    <label for="Wisdom-save">Wisdom</label><input name="Wisdom-save" placeholder="+0" type="text" value="${statModifiers.wisMod}"/><input name="Wisdom-save-prof" type="checkbox" />
                   </li>
                   <li>
-                    <label for="Intelligence-save">Intelligence</label><input name="Intelligence-save" placeholder="+0" type="text" /><input name="Intelligence-save-prof" type="checkbox" />
+                    <label for="Intelligence-save">Intelligence</label><input name="Intelligence-save" placeholder="+0" type="text" value="${statModifiers.intMod}"/><input name="Intelligence-save-prof" type="checkbox" />
                   </li>
                   <li>
-                    <label for="Charisma-save">Charisma</label><input name="Charisma-save" placeholder="+0" type="text" /><input name="Charisma-save-prof" type="checkbox" />
+                    <label for="Charisma-save">Charisma</label><input name="Charisma-save" placeholder="+0" type="text" value="${statModifiers.chaMod}"/><input name="Charisma-save-prof" type="checkbox" />
                   </li>
                 </ul>
                 <div class="label">
@@ -134,58 +134,58 @@ const generateCharacterSheet = () => {
               <div class="skills list-section box">
                 <ul>
                   <li>
-                    <label for="Acrobatics">Acrobatics <span class="skill">(Dex)</span></label><input name="Acrobatics" placeholder="+0" type="text" /><input name="Acrobatics-prof" type="checkbox" />
+                    <label for="Acrobatics">Acrobatics <span class="skill">(Dex)</span></label><input name="Acrobatics" placeholder="+0" type="text" value="${statModifiers.dexMod}"/><input name="Acrobatics-prof" type="checkbox" />
                   </li>
                   <li>
-                    <label for="Animal Handling">Animal Handling <span class="skill">(Wis)</span></label><input name="Animal Handling" placeholder="+0" type="text" /><input name="Animal Handling-prof" type="checkbox" />
+                    <label for="Animal Handling">Animal Handling <span class="skill">(Wis)</span></label><input name="Animal Handling" placeholder="+0" type="text" value="${statModifiers.wisMod}"/><input name="Animal Handling-prof" type="checkbox" />
                   </li>
                   <li>
-                    <label for="Arcana">Arcana <span class="skill">(Int)</span></label><input name="Arcana" placeholder="+0" type="text" /><input name="Arcana-prof" type="checkbox" />
+                    <label for="Arcana">Arcana <span class="skill">(Int)</span></label><input name="Arcana" placeholder="+0" type="text" value="${statModifiers.intMod}"/><input name="Arcana-prof" type="checkbox" />
                   </li>
                   <li>
-                    <label for="Athletics">Athletics <span class="skill">(Str)</span></label><input name="Athletics" placeholder="+0" type="text" /><input name="Athletics-prof" type="checkbox" />
+                    <label for="Athletics">Athletics <span class="skill">(Str)</span></label><input name="Athletics" placeholder="+0" type="text" value="${statModifiers.strMod}"/><input name="Athletics-prof" type="checkbox" />
                   </li>
                   <li>
-                    <label for="Deception">Deception <span class="skill">(Cha)</span></label><input name="Deception" placeholder="+0" type="text" /><input name="Deception-prof" type="checkbox" />
+                    <label for="Deception">Deception <span class="skill">(Cha)</span></label><input name="Deception" placeholder="+0" type="text" value="${statModifiers.chaMod}"/><input name="Deception-prof" type="checkbox" />
                   </li>
                   <li>
-                    <label for="History">History <span class="skill">(Int)</span></label><input name="History" placeholder="+0" type="text" /><input name="History-prof" type="checkbox" />
+                    <label for="History">History <span class="skill">(Int)</span></label><input name="History" placeholder="+0" type="text" value="${statModifiers.intMod}"/><input name="History-prof" type="checkbox" />
                   </li>
                   <li>
-                    <label for="Insight">Insight <span class="skill">(Wis)</span></label><input name="Insight" placeholder="+0" type="text" /><input name="Insight-prof" type="checkbox" />
+                    <label for="Insight">Insight <span class="skill">(Wis)</span></label><input name="Insight" placeholder="+0" type="text" value="${statModifiers.wisMod}"/><input name="Insight-prof" type="checkbox" />
                   </li>
                   <li>
-                    <label for="Intimidation">Intimidation <span class="skill">(Cha)</span></label><input name="Intimidation" placeholder="+0" type="text" /><input name="Intimidation-prof" type="checkbox" />
+                    <label for="Intimidation">Intimidation <span class="skill">(Cha)</span></label><input name="Intimidation" placeholder="+0" type="text" value="${statModifiers.chaMod}"/><input name="Intimidation-prof" type="checkbox" />
                   </li>
                   <li>
-                    <label for="Investigation">Investigation <span class="skill">(Int)</span></label><input name="Investigation" placeholder="+0" type="text" /><input name="Investigation-prof" type="checkbox" />
+                    <label for="Investigation">Investigation <span class="skill">(Int)</span></label><input name="Investigation" placeholder="+0" type="text" value="${statModifiers.intMod}"/><input name="Investigation-prof" type="checkbox" />
                   </li>
                   <li>
-                    <label for="Medicine">Medicine <span class="skill">(Wis)</span></label><input name="Medicine" placeholder="+0" type="text" /><input name="Medicine-prof" type="checkbox" />
+                    <label for="Medicine">Medicine <span class="skill">(Wis)</span></label><input name="Medicine" placeholder="+0" type="text" value="${statModifiers.wisMod}"/><input name="Medicine-prof" type="checkbox" />
                   </li>
                   <li>
-                    <label for="Nature">Nature <span class="skill">(Int)</span></label><input name="Nature" placeholder="+0" type="text" /><input name="Nature-prof" type="checkbox" />
+                    <label for="Nature">Nature <span class="skill">(Int)</span></label><input name="Nature" placeholder="+0" type="text" value="${statModifiers.intMod}"/><input name="Nature-prof" type="checkbox" />
                   </li>
                   <li>
-                    <label for="Perception">Perception <span class="skill">(Wis)</span></label><input name="Perception" placeholder="+0" type="text" /><input name="Perception-prof" type="checkbox" />
+                    <label for="Perception">Perception <span class="skill">(Wis)</span></label><input name="Perception" placeholder="+0" type="text" value="${statModifiers.wisMod}"/><input name="Perception-prof" type="checkbox" />
                   </li>
                   <li>
-                    <label for="Performance">Performance <span class="skill">(Cha)</span></label><input name="Performance" placeholder="+0" type="text" /><input name="Performance-prof" type="checkbox" />
+                    <label for="Performance">Performance <span class="skill">(Cha)</span></label><input name="Performance" placeholder="+0" type="text" value="${statModifiers.chaMod}"/><input name="Performance-prof" type="checkbox" />
                   </li>
                   <li>
-                    <label for="Persuasion">Persuasion <span class="skill">(Cha)</span></label><input name="Persuasion" placeholder="+0" type="text" /><input name="Persuasion-prof" type="checkbox" />
+                    <label for="Persuasion">Persuasion <span class="skill">(Cha)</span></label><input name="Persuasion" placeholder="+0" type="text" value="${statModifiers.chaMod}"/><input name="Persuasion-prof" type="checkbox" />
                   </li>
                   <li>
-                    <label for="Religion">Religion <span class="skill">(Int)</span></label><input name="Religion" placeholder="+0" type="text" /><input name="Religion-prof" type="checkbox" />
+                    <label for="Religion">Religion <span class="skill">(Int)</span></label><input name="Religion" placeholder="+0" type="text" value="${statModifiers.intMod}"/><input name="Religion-prof" type="checkbox" />
                   </li>
                   <li>
-                    <label for="Sleight of Hand">Sleight of Hand <span class="skill">(Dex)</span></label><input name="Sleight of Hand" placeholder="+0" type="text" /><input name="Sleight of Hand-prof" type="checkbox" />
+                    <label for="Sleight of Hand">Sleight of Hand <span class="skill">(Dex)</span></label><input name="Sleight of Hand" placeholder="+0" type="text" value="${statModifiers.dexMod}"/><input name="Sleight of Hand-prof" type="checkbox" />
                   </li>
                   <li>
-                    <label for="Stealth">Stealth <span class="skill">(Dex)</span></label><input name="Stealth" placeholder="+0" type="text" /><input name="Stealth-prof" type="checkbox" />
+                    <label for="Stealth">Stealth <span class="skill">(Dex)</span></label><input name="Stealth" placeholder="+0" type="text" value="${statModifiers.dexMod}"/><input name="Stealth-prof" type="checkbox" />
                   </li>
                   <li>
-                    <label for="Survival">Survival <span class="skill">(Wis)</span></label><input name="Survival" placeholder="+0" type="text" /><input name="Survival-prof" type="checkbox" />
+                    <label for="Survival">Survival <span class="skill">(Wis)</span></label><input name="Survival" placeholder="+0" type="text" value="${statModifiers.wisMod}"/><input name="Survival-prof" type="checkbox" />
                   </li>
                 </ul>
                 <div class="label">
