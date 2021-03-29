@@ -102,7 +102,7 @@ const generateCharacterSheet = () => {
               <div class="saves list-section box">
                 <ul>
                   <li>
-                    <label for="Strength-save">Strength</label><input name="Strength-save" placeholder="+0" type="text" value="${character.savingThrows.includes("Strength") ? showSign(Number(statModifiers.strMod + character.proficiency)) : Number(statModifiers.strMod)}" /><input name="Strength-save-prof" type="checkbox" ${character.savingThrows.includes("Strength") ? "checked" : "" }/>
+                    <label for="Strength-save">Strength</label><input name="Strength-save" placeholder="+0" type="text" value="${character.savingThrows.includes("Strength") ? showSign(Number(statModifiers.strMod + character.proficiency)) : statModifiers.strMod}" /><input name="Strength-save-prof" type="checkbox" ${character.savingThrows.includes("Strength") ? "checked" : "" }/>
                   </li>
                   <li>
                     <label for="Dexterity-save">Dexterity</label><input name="Dexterity-save" placeholder="+0" type="text" value="${character.savingThrows.includes("Dexterity") ? showSign(Number(statModifiers.dexMod) + character.proficiency) : statModifiers.dexMod}" /><input name="Dexterity-save-prof" type="checkbox" ${character.savingThrows.includes("Dexterity") ? "checked" : "" }/>
@@ -130,55 +130,55 @@ const generateCharacterSheet = () => {
                     <label for="Acrobatics">Acrobatics <span class="skill">(Dex)</span></label><input name="Acrobatics" placeholder="+0" type="text" value="${statModifiers.dexMod}"/><input name="Acrobatics-prof" type="checkbox" />
                   </li>
                   <li>
-                    <label for="Animal Handling">Animal Handling <span class="skill">(Wis)</span></label><input name="Animal Handling" placeholder="+0" type="text" value="${statModifiers.wisMod}"/><input name="Animal Handling-prof" type="checkbox" />
+                    <label for="Animal Handling">Animal Handling <span class="skill">(Wis)</span></label><input name="Animal Handling" placeholder="+0" type="text" value="${statModifiers.wisMod}"/><input name="Animal Handling-prof" type="checkbox" ${character.skills.includes("Animal Handling") ? "checked" : ""}/>
                   </li>
                   <li>
                     <label for="Arcana">Arcana <span class="skill">(Int)</span></label><input name="Arcana" placeholder="+0" type="text" value="${statModifiers.intMod}"/><input name="Arcana-prof" type="checkbox" ${character.skills.includes("Arcana") ? "checked" : ""}/>
                   </li>
                   <li>
-                    <label for="Athletics">Athletics <span class="skill">(Str)</span></label><input name="Athletics" placeholder="+0" type="text" value="${statModifiers.strMod}"/><input name="Athletics-prof" type="checkbox" />
+                    <label for="Athletics">Athletics <span class="skill">(Str)</span></label><input name="Athletics" placeholder="+0" type="text" value="${statModifiers.strMod}"/><input name="Athletics-prof" type="checkbox" ${character.skills.includes("Athletics") ? "checked" : ""}/>
                   </li>
                   <li>
-                    <label for="Deception">Deception <span class="skill">(Cha)</span></label><input name="Deception" placeholder="+0" type="text" value="${statModifiers.chaMod}"/><input name="Deception-prof" type="checkbox" />
+                    <label for="Deception">Deception <span class="skill">(Cha)</span></label><input name="Deception" placeholder="+0" type="text" value="${statModifiers.chaMod}"/><input name="Deception-prof" type="checkbox" ${character.skills.includes("Deception") ? "checked" : ""}/>
                   </li>
                   <li>
-                    <label for="History">History <span class="skill">(Int)</span></label><input name="History" placeholder="+0" type="text" value="${statModifiers.intMod}"/><input name="History-prof" type="checkbox" />
+                    <label for="History">History <span class="skill">(Int)</span></label><input name="History" placeholder="+0" type="text" value="${statModifiers.intMod}"/><input name="History-prof" type="checkbox" ${character.skills.includes("History") ? "checked" : ""}/>
                   </li>
                   <li>
-                    <label for="Insight">Insight <span class="skill">(Wis)</span></label><input name="Insight" placeholder="+0" type="text" value="${statModifiers.wisMod}"/><input name="Insight-prof" type="checkbox" />
+                    <label for="Insight">Insight <span class="skill">(Wis)</span></label><input name="Insight" placeholder="+0" type="text" value="${statModifiers.wisMod}"/><input name="Insight-prof" type="checkbox" ${character.skills.includes("Insight") ? "checked" : ""}/>
                   </li>
                   <li>
-                    <label for="Intimidation">Intimidation <span class="skill">(Cha)</span></label><input name="Intimidation" placeholder="+0" type="text" value="${statModifiers.chaMod}"/><input name="Intimidation-prof" type="checkbox" />
+                    <label for="Intimidation">Intimidation <span class="skill">(Cha)</span></label><input name="Intimidation" placeholder="+0" type="text" value="${statModifiers.chaMod}"/><input name="Intimidation-prof" type="checkbox" ${character.skills.includes("Intimidation") ? "checked" : ""}/>
                   </li>
                   <li>
-                    <label for="Investigation">Investigation <span class="skill">(Int)</span></label><input name="Investigation" placeholder="+0" type="text" value="${statModifiers.intMod}"/><input name="Investigation-prof" type="checkbox" />
+                    <label for="Investigation">Investigation <span class="skill">(Int)</span></label><input name="Investigation" placeholder="+0" type="text" value="${statModifiers.intMod}"/><input name="Investigation-prof" type="checkbox" ${character.skills.includes("Investigation") ? "checked" : ""}/>
                   </li>
                   <li>
-                    <label for="Medicine">Medicine <span class="skill">(Wis)</span></label><input name="Medicine" placeholder="+0" type="text" value="${statModifiers.wisMod}"/><input name="Medicine-prof" type="checkbox" />
+                    <label for="Medicine">Medicine <span class="skill">(Wis)</span></label><input name="Medicine" placeholder="+0" type="text" value="${statModifiers.wisMod}"/><input name="Medicine-prof" type="checkbox" ${character.skills.includes("Medicine") ? "checked" : ""}/>
                   </li>
                   <li>
-                    <label for="Nature">Nature <span class="skill">(Int)</span></label><input name="Nature" placeholder="+0" type="text" value="${statModifiers.intMod}"/><input name="Nature-prof" type="checkbox" />
+                    <label for="Nature">Nature <span class="skill">(Int)</span></label><input name="Nature" placeholder="+0" type="text" value="${statModifiers.intMod}"/><input name="Nature-prof" type="checkbox" ${character.skills.includes("Nature") ? "checked" : ""}/>
                   </li>
                   <li>
-                    <label for="Perception">Perception <span class="skill">(Wis)</span></label><input name="Perception" placeholder="+0" type="text" value="${statModifiers.wisMod}"/><input name="Perception-prof" type="checkbox" />
+                    <label for="Perception">Perception <span class="skill">(Wis)</span></label><input name="Perception" placeholder="+0" type="text" value="${statModifiers.wisMod}"/><input name="Perception-prof" type="checkbox" ${character.skills.includes("Perception") ? "checked" : ""}/>
                   </li>
                   <li>
-                    <label for="Performance">Performance <span class="skill">(Cha)</span></label><input name="Performance" placeholder="+0" type="text" value="${statModifiers.chaMod}"/><input name="Performance-prof" type="checkbox" />
+                    <label for="Performance">Performance <span class="skill">(Cha)</span></label><input name="Performance" placeholder="+0" type="text" value="${statModifiers.chaMod}"/><input name="Performance-prof" type="checkbox" ${character.skills.includes("Performance") ? "checked" : ""}/>
                   </li>
                   <li>
-                    <label for="Persuasion">Persuasion <span class="skill">(Cha)</span></label><input name="Persuasion" placeholder="+0" type="text" value="${statModifiers.chaMod}"/><input name="Persuasion-prof" type="checkbox" />
+                    <label for="Persuasion">Persuasion <span class="skill">(Cha)</span></label><input name="Persuasion" placeholder="+0" type="text" value="${statModifiers.chaMod}"/><input name="Persuasion-prof" type="checkbox" ${character.skills.includes("Persuasion") ? "checked" : ""}/>
                   </li>
                   <li>
-                    <label for="Religion">Religion <span class="skill">(Int)</span></label><input name="Religion" placeholder="+0" type="text" value="${statModifiers.intMod}"/><input name="Religion-prof" type="checkbox" />
+                    <label for="Religion">Religion <span class="skill">(Int)</span></label><input name="Religion" placeholder="+0" type="text" value="${statModifiers.intMod}"/><input name="Religion-prof" type="checkbox" ${character.skills.includes("Religion") ? "checked" : ""}/>
                   </li>
                   <li>
-                    <label for="Sleight of Hand">Sleight of Hand <span class="skill">(Dex)</span></label><input name="Sleight of Hand" placeholder="+0" type="text" value="${statModifiers.dexMod}"/><input name="Sleight of Hand-prof" type="checkbox" />
+                    <label for="Sleight of Hand">Sleight of Hand <span class="skill">(Dex)</span></label><input name="Sleight of Hand" placeholder="+0" type="text" value="${statModifiers.dexMod}"/><input name="Sleight of Hand-prof" type="checkbox" ${character.skills.includes("Sleight of Hand") ? "checked" : ""}/>
                   </li>
                   <li>
-                    <label for="Stealth">Stealth <span class="skill">(Dex)</span></label><input name="Stealth" placeholder="+0" type="text" value="${statModifiers.dexMod}"/><input name="Stealth-prof" type="checkbox" />
+                    <label for="Stealth">Stealth <span class="skill">(Dex)</span></label><input name="Stealth" placeholder="+0" type="text" value="${statModifiers.dexMod}"/><input name="Stealth-prof" type="checkbox" ${character.skills.includes("Stealth") ? "checked" : ""}/>
                   </li>
                   <li>
-                    <label for="Survival">Survival <span class="skill">(Wis)</span></label><input name="Survival" placeholder="+0" type="text" value="${statModifiers.wisMod}"/><input name="Survival-prof" type="checkbox" />
+                    <label for="Survival">Survival <span class="skill">(Wis)</span></label><input name="Survival" placeholder="+0" type="text" value="${statModifiers.wisMod}"/><input name="Survival-prof" type="checkbox" ${character.skills.includes("Survival") ? "checked" : ""}/>
                   </li>
                 </ul>
                 <div class="label">

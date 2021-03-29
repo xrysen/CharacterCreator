@@ -20,7 +20,7 @@ let character = {
   intMod: 0,
   wisMod: 0,
   chaMod: 0,
-  skills: ["Arcana", "History", "Athletics"],
+  skills: ["Arcana", "History", "Athletics", "Stealth", "Sleight of Hand"],
   savingThrows: ["Wisdom", "Charisma"],
   proficiency: 2
 }
@@ -64,7 +64,7 @@ let statModifiers = {
 };
 
 const showSign = (num) => {
-  if (num > 0) {
+  if (num >= 0) {
     return "+" + num;
   }
 }
