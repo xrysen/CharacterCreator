@@ -4,6 +4,27 @@ subRaceSelected = "Mountain Dwarf";
 let subRaceStat = 0;
 let mainRaceStat = 0;
 
+let character = {
+  race: "Dwarf",
+  subRace: "Mountain Dwarf",
+  class: "Paladin",
+  str: 0,
+  dex: 0,
+  con: 0,
+  int: 0,
+  wis: 0,
+  cha: 0,
+  strMod: 0,
+  dexMod: 0,
+  conMod: 0,
+  intMod: 0,
+  wisMod: 0,
+  chaMod: 0,
+  skills: ["Arcana", "History", "Athletics"],
+  savingThrows: ["Wisdom", "Charisma"],
+  proficiency: 2
+}
+
 let lastRoll = [];
 
 let baseStats = {
@@ -42,16 +63,16 @@ let statModifiers = {
   chaMod: 0,
 };
 
-const scoreCalcTemplate = () => {
-  let race = "";
-  if (subRaceSelected) {
-    race = subRaceSelected;
-  } else {
-    race = raceSelected;
+const showSign = (num) => {
+  if (num > 0) {
+    return "+" + num;
   }
+}
+
+const scoreCalcTemplate = () => {
   $(".main-container").append(
     `
-      <h3>Roll Ability Scores for your ${race} ${selectedClass}</h3>
+      <h3>Roll Ability Scores for your ${character.subRace ? character.subRace : character.race} ${character.class}</h3>
       <div class = "card-group" id = "stat-cards-1" style="margin-left: 5%; margin-right: 5%">
       </div>
       <div class = "card-group" id = "stat-cards-2" style="margin-left: 5%; margin-right: 5%">
@@ -62,36 +83,36 @@ const scoreCalcTemplate = () => {
   statTable(
     1,
     "Strength",
-    raceSelected,
+    character.race,
     "race_str_bonus",
     "sub_race_str_bonus"
   );
   statTable(
     1,
     "Dexterity",
-    raceSelected,
+    character.race,
     "race_dex_bonus",
     "sub_race_dex_bonus"
   );
   statTable(
     1,
     "Constitution",
-    raceSelected,
+    character.race,
     "race_con_bonus",
     "sub_race_con_bonus"
   );
   statTable(
     2,
     "Intelligence",
-    raceSelected,
+    character.race,
     "race_int_bonus",
     "sub_race_int_bonus"
   );
-  statTable(2, "Wisdom", raceSelected, "race_wis_bonus", "sub_race_wis_bonus");
+  statTable(2, "Wisdom", character.race, "race_wis_bonus", "sub_race_wis_bonus");
   statTable(
     2,
     "Charisma",
-    raceSelected,
+    character.race,
     "race_cha_bonus",
     "sub_race_cha_bonus"
   );
