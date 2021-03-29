@@ -24,6 +24,15 @@ let totalRolls = {
   total6: 0
 };
 
+let statTotals = {
+  strTotal: 0,
+  dexTotal: 0,
+  conTotal: 0,
+  intTotal: 0,
+  wisTotal: 0,
+  chaTota: 0
+}
+
 const scoreCalcTemplate = () => {
   let race = "";
   if (subRaceSelected) {
@@ -289,6 +298,7 @@ const addSelectListeners = (id) => {
         selectedStat = $(`#stat-select-${i}`).val();
         currentTotal = $(`#${selectedStat}-total`).text();
         baseStats[selectedStat] = totalRolls[`total${i}`];
+        statTotals[`${selectedStat}Total`] = Number(currentTotal) + baseStats[selectedStat];
         $(`#${selectedStat}`).text(totalRolls[`total${i}`]);
         $(`#${selectedStat}-total`).text(totalRolls[`total${i}`] + Number(currentTotal));
         currentTotal = Number($(`#${selectedStat}-total`).text());

@@ -1,4 +1,11 @@
 const generateCharacterSheet = () => {
+  let raceToDisplay = "";
+  if (subRaceSelected) {
+    raceToDisplay = subRaceSelected;
+  } else {
+    raceToDisplay = raceSelected;
+  }
+  
   $(".main-container").remove();
   $("body").append(
     `
@@ -20,7 +27,7 @@ const generateCharacterSheet = () => {
         <section class="misc">
           <ul>
             <li>
-              <label for="classlevel">Class & Level</label><input name="classlevel" placeholder="Druid 1" />
+              <label for="classlevel">Class & Level</label><input name="classlevel" placeholder="Druid 1" value="${selectedClass} 1" />
             </li>
             <li>
               <label for="background">Background</label><input name="background" placeholder="Acolyte" />
@@ -29,7 +36,7 @@ const generateCharacterSheet = () => {
               <label for="playername">Player Name</label><input name="playername" placeholder="Emily Axford">
             </li>
             <li>
-              <label for="race">Race</label><input name="race" placeholder="Crick Elf" />
+              <label for="race">Race</label><input name="race" placeholder="Crick Elf" value="${raceToDisplay}" />
             </li>
             <li>
               <label for="alignment">Alignment</label><input name="alignment" placeholder="True Neutral" />
@@ -47,7 +54,7 @@ const generateCharacterSheet = () => {
               <ul>
                 <li>
                   <div class="score">
-                    <label for="Strengthscore">Strength</label><input name="Strengthscore" placeholder="10" />
+                    <label for="Strengthscore">Strength</label><input name="Strengthscore" placeholder="10" value="${statTotals.strTotal}" />
                   </div>
                   <div class="modifier">
                     <input name="Strengthmod" placeholder="+0" />
@@ -55,7 +62,7 @@ const generateCharacterSheet = () => {
                 </li>
                 <li>
                   <div class="score">
-                    <label for="Dexterityscore">Dexterity</label><input name="Dexterityscore" placeholder="10" />
+                    <label for="Dexterityscore">Dexterity</label><input name="Dexterityscore" placeholder="10" value="${statTotals.dexTotal}" />
                   </div>
                   <div class="modifier">
                     <input name="Dexteritymod" placeholder="+0" />
@@ -63,7 +70,7 @@ const generateCharacterSheet = () => {
                 </li>
                 <li>
                   <div class="score">
-                    <label for="Constitutionscore">Constitution</label><input name="Constitutionscore" placeholder="10" />
+                    <label for="Constitutionscore">Constitution</label><input name="Constitutionscore" placeholder="10" value="${statTotals.conTotal}"/>
                   </div>
                   <div class="modifier">
                     <input name="Constitutionmod" placeholder="+0" />
@@ -71,7 +78,7 @@ const generateCharacterSheet = () => {
                 </li>
                 <li>
                   <div class="score">
-                    <label for="Wisdomscore">Wisdom</label><input name="Wisdomscore" placeholder="10" />
+                    <label for="Wisdomscore">Wisdom</label><input name="Wisdomscore" placeholder="10" value="${statTotals.wisTotal}"/>
                   </div>
                   <div class="modifier">
                     <input name="Wisdommod" placeholder="+0" />
@@ -79,7 +86,7 @@ const generateCharacterSheet = () => {
                 </li>
                 <li>
                   <div class="score">
-                    <label for="Intelligencescore">Intelligence</label><input name="Intelligencescore" placeholder="10" />
+                    <label for="Intelligencescore">Intelligence</label><input name="Intelligencescore" placeholder="10"  value="${statTotals.intTotal}"/>
                   </div>
                   <div class="modifier">
                     <input name="Intelligencemod" placeholder="+0" />
@@ -87,7 +94,7 @@ const generateCharacterSheet = () => {
                 </li>
                 <li>
                   <div class="score">
-                    <label for="Charismascore">Charisma</label><input name="Charismascore" placeholder="10" />
+                    <label for="Charismascore">Charisma</label><input name="Charismascore" placeholder="10" value="${statTotals.chaTotal}"/>
                   </div>
                   <div class="modifier">
                     <input name="Charismamod" placeholder="+0" />
