@@ -9,16 +9,7 @@ const generateCharacterSheet = () => {
   $(".main-container").remove();
   $("body").append(
     `
-    <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Character Sheet</title>
     <link rel="stylesheet" href="../static/css/character_sheet.css" />
-  </head>
-  <body>
     <form class="charsheet" style = "background-color: white; border-radius: 10px; padding: 10px;">
       <header>
         <section class="charname">
@@ -384,8 +375,6 @@ const generateCharacterSheet = () => {
         </section>
       </main>
     </form>
-  </body>
-</html>
     `
   );
 }

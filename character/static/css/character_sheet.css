@@ -79,7 +79,6 @@ form.charsheet label {
 }
 form.charsheet header {
   display: flex;
-  align-contents: stretch;
   align-items: stretch;
 }
 form.charsheet header section.charname {
@@ -207,7 +206,7 @@ form.charsheet
   background: white;
 }
 form.charsheet main > section section.attributes div.scores ul li div.modifier {
-  margin-top: 3px;
+  margin-top: -1px;
 }
 form.charsheet
   main

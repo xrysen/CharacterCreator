@@ -306,6 +306,8 @@ const addSelectListeners = (id) => {
       }
       $("#apply-score").remove();
       $(".main-container").append(`<button class = "btn btn-primary" id = "generate-sheet" style = "margin-top: 20px;">Generate Character Sheet</button>`);
+      $(".main-container").remove();
+      $("#bs").remove(); // Remove bootstrap
       generateCharacterSheet();
     })
   });
