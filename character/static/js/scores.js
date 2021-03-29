@@ -294,6 +294,9 @@ const addSelectListeners = (id) => {
         currentTotal = Number($(`#${selectedStat}-total`).text());
         $(`#${selectedStat}-mod`).text(calculateModifier(currentTotal));
       }
+      $("#apply-score").remove();
+      $(".main-container").append(`<button class = "btn btn-primary" id = "generate-sheet" style = "margin-top: 20px;">Generate Character Sheet</button>`);
+      generateCharacterSheet();
     })
   });
 }
