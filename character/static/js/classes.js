@@ -89,7 +89,7 @@ const showCinfo = (playerClass) => {
         );
 
   $("#next-button").on('click', () => {
-    selectedClass = playerClass.class_name;
+    character.class = playerClass.class_name;
     for (let i = 1; i <= playerClass.class_num_skills; i++) {
       let skillSelected = $(`#choose-skills-${i}`).val();
       if (skillSelected) // Fix
@@ -105,13 +105,13 @@ const showCinfo = (playerClass) => {
 
 const showClassButtons = () => {
   $(".main-container").append('<div class = "class-container"></div>');
-  if (!subRaceSelected) {
+  if (!character.subRace) {
     $(".class-container").append(
-      `<h3 class = 'h3 mob-3 font-weight-normal'>Choose a Class for your ${raceSelected}: </h3>`
+      `<h3 class = 'h3 mob-3 font-weight-normal'>Choose a Class for your ${character.race}: </h3>`
     );
   } else {
     $(".class-container").append(
-      `<h3 class = 'h3 mob-3 font-weight-normal'>Choose a Class for your ${subRaceSelected}: </h3>`
+      `<h3 class = 'h3 mob-3 font-weight-normal'>Choose a Class for your ${character.subRace}: </h3>`
     );
   }
   classData.then((classes) => {

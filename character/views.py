@@ -19,6 +19,9 @@ def index(request):
 
   return render(request, 'index.html', context)
 
+def character_sheet(request):
+  return render(request, 'character_sheet.html')
+
 class RaceApiView(APIView):
 
   def get(self, request, *args, **kwargs):
