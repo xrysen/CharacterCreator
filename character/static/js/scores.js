@@ -1,34 +1,31 @@
-raceSelected = "Human";
-selectedClass = "Fighter";
-subRaceSelected = "";
 let subRaceStat = 0;
 let mainRaceStat = 0;
 
-let character = {
-  name: "Hardwon Surefoot",
-  race: "Human",
-  subRace: "",
-  class: "Fighter",
-  background: "",
-  alignment: "",
-  playerName: "",
-  experiencePoints: 0,
-  str: 0,
-  dex: 0,
-  con: 0,
-  int: 0,
-  wis: 0,
-  cha: 0,
-  strMod: 0,
-  dexMod: 0,
-  conMod: 0,
-  intMod: 0,
-  wisMod: 0,
-  chaMod: 0,
-  skills: ["Athletics", "Perception"],
-  savingThrows: ["Strength", "Constitution"],
-  proficiency: 2
-}
+// let character = {
+//   name: "Hardwon Surefoot",
+//   race: "Human",
+//   subRace: "",
+//   class: "Fighter",
+//   background: "",
+//   alignment: "",
+//   playerName: "",
+//   experiencePoints: 0,
+//   str: 0,
+//   dex: 0,
+//   con: 0,
+//   int: 0,
+//   wis: 0,
+//   cha: 0,
+//   strMod: 0,
+//   dexMod: 0,
+//   conMod: 0,
+//   intMod: 0,
+//   wisMod: 0,
+//   chaMod: 0,
+//   skills: ["Athletics", "Perception"],
+//   savingThrows: ["Strength", "Constitution"],
+//   proficiency: 2
+// }
 
 let lastRoll = [];
 
@@ -249,8 +246,8 @@ const statRoll = (id) => {
   return total;
 };
 
-scoreCalcTemplate();
-rollBlock();
+// scoreCalcTemplate();
+// rollBlock();
 
 const calculateModifier = (score) => {
   switch (score) {
@@ -322,7 +319,6 @@ const calculateModifier = (score) => {
 const addSelectListeners = (id) => {
   $(`#stat-select-${id}`).on("change", function () {
     for (let i = 1; i <= 6; i++) {
-      console.log($(`#stat-select-${id}`).val());
       if (!$(`#stat-select-${i}`).val()) {
         return;
       }

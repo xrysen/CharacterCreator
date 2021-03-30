@@ -38,50 +38,50 @@ const generateCharacterSheet = () => {
               <ul>
                 <li>
                   <div class="score">
-                    <label for="Strengthscore">Strength</label><input name="Strengthscore" placeholder="10" value="${statTotals.strTotal}" />
+                    <label for="Strengthscore">Strength</label><input name="Strengthscore" placeholder="10"  value="${statModifiers.strMod}"/>
                   </div>
                   <div class="modifier">
-                    <input name="Strengthmod" placeholder="+0" value="${statModifiers.strMod}"/>
+                    <input name="Strengthmod" placeholder="+0" value="${statTotals.strTotal}"/>
                   </div>
                 </li>
                 <li>
                   <div class="score">
-                    <label for="Dexterityscore">Dexterity</label><input name="Dexterityscore" placeholder="10" value="${statTotals.dexTotal}" />
+                    <label for="Dexterityscore">Dexterity</label><input name="Dexterityscore" placeholder="10" value="${statModifiers.dexMod}" />
                   </div>
                   <div class="modifier">
-                    <input name="Dexteritymod" placeholder="+0" value="${statModifiers.dexMod}"/>
+                    <input name="Dexteritymod" placeholder="+0" value="${statTotals.dexTotal}"/>
                   </div>
                 </li>
                 <li>
                   <div class="score">
-                    <label for="Constitutionscore">Constitution</label><input name="Constitutionscore" placeholder="10" value="${statTotals.conTotal}"/>
+                    <label for="Constitutionscore">Constitution</label><input name="Constitutionscore" placeholder="10" value="${statModifiers.conMod}"/>
                   </div>
                   <div class="modifier">
-                    <input name="Constitutionmod" placeholder="+0" value="${statModifiers.conMod}"/>
+                    <input name="Constitutionmod" placeholder="+0" value="${statTotals.conTotal}"/>
                   </div>
                 </li>
                 <li>
                   <div class="score">
-                    <label for="Wisdomscore">Wisdom</label><input name="Wisdomscore" placeholder="10" value="${statTotals.wisTotal}"/>
+                    <label for="Wisdomscore">Wisdom</label><input name="Wisdomscore" placeholder="10" value="${statModifiers.wisMod}"/>
                   </div>
                   <div class="modifier">
-                    <input name="Wisdommod" placeholder="+0" value="${statModifiers.wisMod}"/>
+                    <input name="Wisdommod" placeholder="+0" value="${statTotals.wisTotal}"/>
                   </div>
                 </li>
                 <li>
                   <div class="score">
-                    <label for="Intelligencescore">Intelligence</label><input name="Intelligencescore" placeholder="10"  value="${statTotals.intTotal}"/>
+                    <label for="Intelligencescore">Intelligence</label><input name="Intelligencescore" placeholder="10" value="${statModifiers.intMod}" />
                   </div>
                   <div class="modifier">
-                    <input name="Intelligencemod" placeholder="+0" value="${statModifiers.intMod}"/>
+                    <input name="Intelligencemod" placeholder="+0" value="${statTotals.intTotal}"/>
                   </div>
                 </li>
                 <li>
                   <div class="score">
-                    <label for="Charismascore">Charisma</label><input name="Charismascore" placeholder="10" value="${statTotals.chaTotal}"/>
+                    <label for="Charismascore">Charisma</label><input name="Charismascore" placeholder="10" value="${statModifiers.chaMod}"/>
                   </div>
                   <div class="modifier">
-                    <input name="Charismamod" placeholder="+0" value="${statModifiers.chaMod}"/>
+                    <input name="Charismamod" placeholder="+0" value="${statTotals.chaTotal}"/>
                   </div>
                 </li>
               </ul>
