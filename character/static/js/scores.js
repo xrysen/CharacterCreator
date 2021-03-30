@@ -1,13 +1,18 @@
-raceSelected = "Dwarf";
-selectedClass = "Paladin";
-subRaceSelected = "Mountain Dwarf";
+raceSelected = "Human";
+selectedClass = "Fighter";
+subRaceSelected = "";
 let subRaceStat = 0;
 let mainRaceStat = 0;
 
 let character = {
-  race: "Dwarf",
-  subRace: "Mountain Dwarf",
-  class: "Paladin",
+  name: "Hardwon Surefoot",
+  race: "Human",
+  subRace: "",
+  class: "Fighter",
+  background: "",
+  alignment: "",
+  playerName: "",
+  experiencePoints: 0,
   str: 0,
   dex: 0,
   con: 0,
@@ -20,8 +25,8 @@ let character = {
   intMod: 0,
   wisMod: 0,
   chaMod: 0,
-  skills: ["Arcana", "History", "Athletics", "Stealth", "Sleight of Hand"],
-  savingThrows: ["Wisdom", "Charisma"],
+  skills: ["Athletics", "Perception"],
+  savingThrows: ["Strength", "Constitution"],
   proficiency: 2
 }
 
@@ -346,7 +351,7 @@ const addSelectListeners = (id) => {
         `<button class = "btn btn-primary" id = "generate-sheet" style = "margin-top: 20px;">Generate Character Sheet</button>`
       );
       $(".main-container").remove();
-      $("#bs").remove(); // Remove bootstrap
+      $("#bs").remove(); // Removes bootstrap for character sheet
       generateCharacterSheet();
     });
   });

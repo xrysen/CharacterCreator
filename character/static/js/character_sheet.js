@@ -6,7 +6,7 @@ const generateCharacterSheet = () => {
     <form class="charsheet" style = "background-color: white; border-radius: 10px; padding: 10px;">
       <header>
         <section class="charname">
-          <label for="charname">Character Name</label><input name="charname" placeholder="Moonshine Siobhan" />
+          <label for="charname">Character Name</label><input name="charname" placeholder="Moonshine Siobhan" value="${character.name}"/>
         </section>
         <section class="misc">
           <ul>
@@ -102,7 +102,7 @@ const generateCharacterSheet = () => {
               <div class="saves list-section box">
                 <ul>
                   <li>
-                    <label for="Strength-save">Strength</label><input name="Strength-save" placeholder="+0" type="text" value="${character.savingThrows.includes("Strength") ? showSign(Number(statModifiers.strMod + character.proficiency)) : statModifiers.strMod}" /><input name="Strength-save-prof" type="checkbox" ${character.savingThrows.includes("Strength") ? "checked" : "" }/>
+                    <label for="Strength-save">Strength</label><input name="Strength-save" placeholder="+0" type="text" value="${character.savingThrows.includes("Strength") ? showSign(Number(statModifiers.strMod) + character.proficiency) : statModifiers.strMod}" /><input name="Strength-save-prof" type="checkbox" ${character.savingThrows.includes("Strength") ? "checked" : "" }/>
                   </li>
                   <li>
                     <label for="Dexterity-save">Dexterity</label><input name="Dexterity-save" placeholder="+0" type="text" value="${character.savingThrows.includes("Dexterity") ? showSign(Number(statModifiers.dexMod) + character.proficiency) : statModifiers.dexMod}" /><input name="Dexterity-save-prof" type="checkbox" ${character.savingThrows.includes("Dexterity") ? "checked" : "" }/>
