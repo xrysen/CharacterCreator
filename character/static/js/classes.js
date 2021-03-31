@@ -93,10 +93,12 @@ const showCinfo = (playerClass) => {
     for (let i = 1; i <= playerClass.class_num_skills; i++) {
       let skillSelected = $(`#choose-skills-${i}`).val();
       if (skillSelected) // Fix
-        selectedSkills.push(skillSelected);
+        character.skills.push(skillSelected);
       else
         alert("Please choose a skill");
     }
+    character.savingThrows.push(playerClass.class_save_throw1);
+    character.savingThrows.push(playerClass.class_save_throw2);
     emptyClassContainer();
     scoreCalcTemplate();
     rollBlock();
