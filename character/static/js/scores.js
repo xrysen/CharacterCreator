@@ -127,7 +127,7 @@ const statTable = (group, statName, race, statAbbr, subStatAbbr) => {
   raceData.then((res) => {
     if (res[0].race_has_subrace) {
       for (let i = 0; i < res[0].sub_races.length; i++) {
-        if (res[0].sub_races[i].sub_race_name === subRaceSelected) {
+        if (res[0].sub_races[i].sub_race_name === character.subRace) {
           subRaceStat = res[0].sub_races[i][subStatAbbr];
         }
       }
@@ -349,6 +349,7 @@ const addSelectListeners = (id) => {
       $(".main-container").remove();
       $("#bs").remove(); // Removes bootstrap for character sheet
       generateCharacterSheet();
+      // Go to background
     });
   });
 };
