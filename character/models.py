@@ -79,7 +79,7 @@ class Alignment(models.Model):
 class Background(models.Model):
   name = models.CharField(max_length=50)
   skills = models.ManyToManyField(Skill, related_name = "background_skill_list")
-  num_lanagues = models.IntegerField()
+  num_languages = models.IntegerField()
 
   def __str__(self):
     return self.name
@@ -102,6 +102,13 @@ class Ideal(models.Model):
 class Bond(models.Model):
   description = models.TextField()
   background = models.ForeignKey(Background, on_delete=models.CASCADE, related_name = "background_bonds")
+
+  def __str__(self):
+    return self.description
+
+class Flaw(models.Model):
+  description = models.TextField()
+  background = models.ForeignKey(Background, on_delete=models.CASCADE, related_name="background_flaws")
 
   def __str__(self):
     return self.description
