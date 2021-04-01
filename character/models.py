@@ -68,3 +68,10 @@ class Class(models.Model):
 
   def __str__(self):
     return self.class_name
+
+class Alignment(models.Model):
+  alignment_name = models.CharField(max_length=50)
+  alignment_description = models.TextField()
+
+  def __str__(self):
+    return self.alignment_name
