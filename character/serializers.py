@@ -1,5 +1,35 @@
 from rest_framework import serializers
-from character.models import Race, Class, SubRace, Skill
+from character.models import Race, Class, SubRace, Skill, Background, PersonalityTrait, Bond, Flaw, Ideal
+
+class PersonalityTraitSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PersonalityTrait
+        fields = '__all__'
+
+class BondSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Bond
+        fields = '__all__'
+
+class FlawSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Flaw
+        fields = '__all__'
+
+class IdealSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Ideal
+        fields = '__all__'
+
+class BackgroundSerializer(serializers.ModelSerializer):
+    background_traits = PersonalityTraitSerializer(many=True, read_only=True)
+    background_bonds = BondSerializer(many=True, read_only=True)
+    background_ideals = IdealSerializer(many=True, read_only=True)
+    background_flaws = FlawSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Background
+        fields = ['id','name','skills','background_traits', 'background_bonds', 'background_ideals', 'background_flaws']
 
 class SkillSerializer(serializers.ModelSerializer):
     class Meta:

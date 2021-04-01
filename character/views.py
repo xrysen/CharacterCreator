@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from django.core.serializers import serialize
 from django.http import HttpResponse, JsonResponse
-from .models import Race, SubRace, Class, Skill
+from .models import Race, SubRace, Class, Skill, Background
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status, generics
-from .serializers import RaceSerializer, ClassSerializer, SubRaceSerializer, SkillSerializer
+from .serializers import RaceSerializer, ClassSerializer, SubRaceSerializer, SkillSerializer, BackgroundSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 
 # Create your views here.
@@ -54,3 +54,9 @@ class ClassList(generics.ListAPIView):
   serializer_class = ClassSerializer
   filter_backends = [DjangoFilterBackend]
   filterset_fields = ['id', 'class_name']
+
+class BackgroundList(generics.ListAPIView):
+  queryset = Background.objects.all()
+  serializer_class = BackgroundSerializer
+  filter_backends = [DjangoFilterBackend]
+  filterset_fields = ['id','name']
