@@ -75,3 +75,34 @@ class Alignment(models.Model):
 
   def __str__(self):
     return self.alignment_name
+
+class Background(models.Model):
+  name = models.CharField(max_length=50)
+  skills = models.ManyToManyField(Skill, related_name = "background_skill_list")
+  num_lanagues = models.IntegerField()
+
+  def __str__(self):
+    return self.name
+
+class PersonalityTrait(models.Model):
+  description = models.TextField()
+  background = models.ForeignKey(Background, on_delete=models.CASCADE, related_name="background_traits")
+
+  def __str__(self):
+    return self.description
+
+class Ideal(models.Model):
+  name = models.CharField(max_length=40)
+  description = models.TextField()
+  background = models.ForeignKey(Background, on_delete=models.CASCADE, related_name="background_ideals")
+
+  def __str__(self):
+    return self.name
+
+class Bond(models.Model):
+  description = models.TextField()
+  background = models.ForeignKey(Background, on_delete=models.CASCADE, related_name = "background_bonds")
+
+  def __str__(self):
+    return self.description
+
