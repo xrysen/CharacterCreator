@@ -19,9 +19,40 @@ const showBackgroundInfo = (background) => {
       <p class = "race-description">
       ${background.description}
       </p>
+      <h3>Personality Trait</h3>
+      <select id = "personality-trait">
+      <option value="">Choose Personality Trait</option>
+      </select>
+      <h3>Ideals</h3>
+      <select id = "ideals">
+      </select>
+      <h3>Bonds</h3>
+      <select id = "bonds">
+      </select>
+      <h3>Flaws</h3>
+      <select id = "flaws">
+      </select>
     </div>
     `
   )
+
+  for (let i = 0; i <=7; i++) {
+    $("#personality-trait").append(
+      `<option value="${background.background_traits[i].description}">${background.background_traits[i].description}</option>`
+    );
+  }
+
+  for (let i = 0; i <=5; i++) {
+    $("#ideals").append(
+      `<option value="${background.background_ideals[i].name}"><strong>${background.background_ideals[i].name}.</strong> ${background.background_ideals[i].description}</option>`
+    );
+    $("#bonds").append(
+      `<option value="${background.background_bonds[i].description}">${background.background_bonds[i].description}</option>`
+    );
+    $("#flaws").append(
+      `<option value="${background.background_flaws[i].description}">${background.background_flaws[i].description}</option>`
+    )
+  }
 }
 
 const showBackgroundButtons = () => {
