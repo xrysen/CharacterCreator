@@ -78,6 +78,7 @@ class Alignment(models.Model):
 
 class Background(models.Model):
   name = models.CharField(max_length=50)
+  description = models.TextField()
   skills = models.ManyToManyField(Skill, related_name = "background_skill_list")
   num_languages = models.IntegerField()
 

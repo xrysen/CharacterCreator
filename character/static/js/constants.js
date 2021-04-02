@@ -1,5 +1,6 @@
 const RACE_ENDPOINT = "http://localhost:8000/character/race";
 const CLASS_ENDPOINT = "http://localhost:8000/character/class";
+const BG_ENDPOINT = "http://localhost:8000/character/background";
 
 let character = {
   name: "",

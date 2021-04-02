@@ -29,7 +29,7 @@ class BackgroundSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Background
-        fields = ['id','name','skills','background_traits', 'background_bonds', 'background_ideals', 'background_flaws']
+        fields = ['id','name','skills','description', 'background_traits', 'background_bonds', 'background_ideals', 'background_flaws']
 
 class SkillSerializer(serializers.ModelSerializer):
     class Meta:
