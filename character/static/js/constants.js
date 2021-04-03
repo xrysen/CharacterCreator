@@ -25,5 +25,10 @@ let character = {
   chaMod: 0,
   skills: [],
   savingThrows: [],
-  proficiency: 2
+  proficiency: 2,
+  background: "",
+  personalityTrait: "",
+  ideal: "",
+  bond: "",
+  flaw: ""
 }

@@ -21,20 +21,22 @@ class IdealSerializer(serializers.ModelSerializer):
         model = Ideal
         fields = '__all__'
 
+class SkillSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Skill
+        fields = '__all__'
+
 class BackgroundSerializer(serializers.ModelSerializer):
     background_traits = PersonalityTraitSerializer(many=True, read_only=True)
     background_bonds = BondSerializer(many=True, read_only=True)
     background_ideals = IdealSerializer(many=True, read_only=True)
     background_flaws = FlawSerializer(many=True, read_only=True)
+    skills = SkillSerializer(many=True, read_only=True)
 
     class Meta:
         model = Background
         fields = ['id','name','skills','description', 'background_traits', 'background_bonds', 'background_ideals', 'background_flaws']
 
-class SkillSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Skill
-        fields = '__all__'
 
 class ClassSerializer(serializers.ModelSerializer):
     class_skills = SkillSerializer(many=True, read_only=True)

@@ -226,17 +226,17 @@ const rollBlock = () => {
   }
 };
 
-const rollDice = () => {
-  return Math.floor(Math.random() * 6) + 1;
+const rollDice = (sides) => {
+  return Math.floor(Math.random() * sides) + 1;
 };
 
 const statRoll = (id) => {
   let total = 0;
   lastRoll = [];
-  lastRoll.push(rollDice());
-  lastRoll.push(rollDice());
-  lastRoll.push(rollDice());
-  lastRoll.push(rollDice());
+  lastRoll.push(rollDice(6));
+  lastRoll.push(rollDice(6));
+  lastRoll.push(rollDice(6));
+  lastRoll.push(rollDice(6));
   lastRoll = lastRoll.sort().reverse();
   for (let i = 0; i < lastRoll.length - 1; i++) {
     total += lastRoll[i];

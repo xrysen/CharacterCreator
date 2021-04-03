@@ -18,41 +18,63 @@ const showBackgroundInfo = (background) => {
       <h1 class = "race-header">${background.name}</h1>
       <p class = "race-description">
       ${background.description}
+      <br /><br /><strong>Proficiencies:</strong> ${background.skills[0].skill_name}, ${background.skills[1].skill_name}
       </p>
       <h3>Personality Trait</h3>
-      <select id = "personality-trait">
+      <select id = "personality-trait" style="width: 90%">
       <option value="">Choose Personality Trait</option>
       </select>
+      <br />
+      <button id = "trait-btn" class = "btn btn-primary" style="margin: 10px">Random</button>
       <h3>Ideals</h3>
-      <select id = "ideals">
+      <select id = "ideals" style="width: 90%">
+      <option value="">Select Ideal</option>
       </select>
+      <button id = "ideal-btn" class = "btn btn-primary" style="margin: 10px">Random</button>
       <h3>Bonds</h3>
-      <select id = "bonds">
+      <select id = "bonds" style="width: 90%">
+      <option value="">Select Bond</option>
       </select>
+      <button id = "bond-btn" class = "btn btn-primary" style="margin: 10px">Random</button>
       <h3>Flaws</h3>
-      <select id = "flaws">
+      <select id = "flaws" style="width: 90%">
+      <option value="">Select Flaw</option>
       </select>
+      <button id = "flaw-btn" class = "btn btn-primary" style="margin: 10px">Random</button>
     </div>
     `
   )
 
   for (let i = 0; i <=7; i++) {
     $("#personality-trait").append(
-      `<option value="${background.background_traits[i].description}">${background.background_traits[i].description}</option>`
+      `<option id = "trait-${i + 1}" value="${background.background_traits[i].description}">${background.background_traits[i].description}</option>`
     );
   }
 
   for (let i = 0; i <=5; i++) {
     $("#ideals").append(
-      `<option value="${background.background_ideals[i].name}"><strong>${background.background_ideals[i].name}.</strong> ${background.background_ideals[i].description}</option>`
+      `<option id = "ideal-${i + 1}" value="${background.background_ideals[i].name}"><strong>${background.background_ideals[i].name}.</strong> ${background.background_ideals[i].description}</option>`
     );
     $("#bonds").append(
-      `<option value="${background.background_bonds[i].description}">${background.background_bonds[i].description}</option>`
+      `<option id = "bond-${i + 1}" value="${background.background_bonds[i].description}">${background.background_bonds[i].description}</option>`
     );
     $("#flaws").append(
-      `<option value="${background.background_flaws[i].description}">${background.background_flaws[i].description}</option>`
+      `<option id = "flaw-${i + 1}" value="${background.background_flaws[i].description}">${background.background_flaws[i].description}</option>`
     )
   }
+
+  $("#trait-btn").on("click", () => {
+    $(`#trait-${rollDice(8)}`).attr("selected","selected");
+  });
+  $("#ideal-btn").on("click", () => {
+    $(`#ideal-${rollDice(6)}`).attr("selected", "selected");
+  })
+  $("#bond-btn").on("click", () => {
+    $(`#bond-${rollDice(6)}`).attr("selected", "selected");
+  })
+  $("#flaw-btn").on("click", () => {
+    $(`#flaw-${rollDice(6)}`).attr("selected", "selected");
+  })
 }
 
 const showBackgroundButtons = () => {
@@ -73,10 +95,17 @@ const showBackgroundButtons = () => {
       );
 
       $(`#bg-${background.id}`).on("click", () => {
+        character.skills = character.skills.slice(0, -2); // Remove previous skills on change
         showBackgroundInfo(background);
+        character.background=background.name;
+        character.skills.push(background.skills[0].skill_name);
+        character.skills.push(background.skills[1].skill_name);
+        console.log(character);
       })
     }
   })
 }
+
+
 
 showBackgroundButtons();
