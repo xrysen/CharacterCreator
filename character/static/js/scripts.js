@@ -187,4 +187,4 @@
     });
   };
 
-  //showRaceButtons();
+showRaceButtons();

@@ -14,7 +14,7 @@ const generateCharacterSheet = () => {
               <label for="classlevel">Class & Level</label><input name="classlevel" placeholder="Druid 1" value="${character.class} 1" />
             </li>
             <li>
-              <label for="background">Background</label><input name="background" placeholder="Acolyte" />
+              <label for="background">Background</label><input name="background" placeholder="Acolyte" value="${character.background}" />
             </li>
             <li>
               <label for="playername">Player Name</label><input name="playername" placeholder="Emily Axford">
@@ -348,7 +348,7 @@ const generateCharacterSheet = () => {
         <section>
           <section class="flavor">
             <div class="personality">
-              <label for="personality">Personality</label><textarea name="personality"></textarea>
+              <label for="personality">Personality</label><textarea name="personality">${character.personalityTrait}</textarea>
             </div>
             <div class="ideals">
               <label for="ideals">Ideals</label><textarea name="ideals"></textarea>

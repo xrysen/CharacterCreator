@@ -73,11 +73,12 @@ const showSign = (num) => {
 
 const scoreCalcTemplate = () => {
   $(".main-container").append(
-    `
-      <h3>Roll Ability Scores for your ${character.subRace ? character.subRace : character.race} ${character.class}</h3>
-      <div class = "card-group" id = "stat-cards-1" style="margin-left: 5%; margin-right: 5%">
-      </div>
-      <div class = "card-group" id = "stat-cards-2" style="margin-left: 5%; margin-right: 5%">
+    ` <div class = "score-container">
+        <h3>Roll Ability Scores for your ${character.subRace ? character.subRace : character.race} ${character.class}</h3>
+        <div class = "card-group" id = "stat-cards-1" style="margin-left: 5%; margin-right: 5%">
+        </div>
+        <div class = "card-group" id = "stat-cards-2" style="margin-left: 5%; margin-right: 5%">
+        </div>
       </div>
     `
   );
@@ -169,7 +170,7 @@ const statTable = (group, statName, race, statAbbr, subStatAbbr) => {
 };
 
 const rollBlock = () => {
-  $(".main-container").append(
+  $(".score-container").append(
     `
     <div class = "dice-group-container">
       <div class = "dice-group" id = "dice-group-1">
@@ -323,7 +324,7 @@ const addSelectListeners = (id) => {
         return;
       }
     }
-    $(".main-container").append(
+    $(".score-container").append(
       `<button class = "btn btn-primary" id = "apply-score" style="margin-top: 20px">Apply</button>`
     );
     $("#apply-score").on("click", () => {
@@ -343,13 +344,14 @@ const addSelectListeners = (id) => {
         statModifiers[`${selectedStat}Mod`] = calculateModifier(currentTotal);
       }
       $("#apply-score").remove();
-      $(".main-container").append(
+      $(".score-container").append(
         `<button class = "btn btn-primary" id = "generate-sheet" style = "margin-top: 20px;">Generate Character Sheet</button>`
       );
-      $(".main-container").remove();
-      $("#bs").remove(); // Removes bootstrap for character sheet
-      generateCharacterSheet();
+      $(".score-container").remove();
+      // $("#bs").remove(); // Removes bootstrap for character sheet
+      // generateCharacterSheet();
       // Go to background
+      showBackgroundButtons();
     });
   });
 };

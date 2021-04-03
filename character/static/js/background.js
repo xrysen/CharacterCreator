@@ -65,7 +65,18 @@ const showBackgroundInfo = (background) => {
 
   $("#trait-btn").on("click", () => {
     $(`#trait-${rollDice(8)}`).attr("selected","selected");
+    $('.class-container').append(`<br /><br />
+    <button id = "nxt-btn" class = "btn btn-primary"> Next</button>`);
+    character.personalityTrait = $("#personality-trait").val();
+    $("#nxt-btn").on("click", () => {
+      character.skills.push(background.skills[0].skill_name);
+        character.skills.push(background.skills[1].skill_name);
+      $(".main-container").remove();
+      $("#bs").remove();
+      generateCharacterSheet();
+    })
   });
+
   $("#ideal-btn").on("click", () => {
     $(`#ideal-${rollDice(6)}`).attr("selected", "selected");
   })
@@ -75,6 +86,7 @@ const showBackgroundInfo = (background) => {
   $("#flaw-btn").on("click", () => {
     $(`#flaw-${rollDice(6)}`).attr("selected", "selected");
   })
+
 }
 
 const showBackgroundButtons = () => {
@@ -95,12 +107,8 @@ const showBackgroundButtons = () => {
       );
 
       $(`#bg-${background.id}`).on("click", () => {
-        character.skills = character.skills.slice(0, -2); // Remove previous skills on change
         showBackgroundInfo(background);
         character.background=background.name;
-        character.skills.push(background.skills[0].skill_name);
-        character.skills.push(background.skills[1].skill_name);
-        console.log(character);
       })
     }
   })
@@ -108,4 +116,4 @@ const showBackgroundButtons = () => {
 
 
 
-showBackgroundButtons();
+//showBackgroundButtons();
