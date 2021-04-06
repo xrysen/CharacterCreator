@@ -351,13 +351,13 @@ const generateCharacterSheet = () => {
               <label for="personality">Personality</label><textarea name="personality">${character.personalityTrait}</textarea>
             </div>
             <div class="ideals">
-              <label for="ideals">Ideals</label><textarea name="ideals"></textarea>
+              <label for="ideals">Ideals</label><textarea name="ideals">${character.ideal}</textarea>
             </div>
             <div class="bonds">
-              <label for="bonds">Bonds</label><textarea name="bonds"></textarea>
+              <label for="bonds">Bonds</label><textarea name="bonds">${character.bond}</textarea>
             </div>
             <div class="flaws">
-              <label for="flaws">Flaws</label><textarea name="flaws"></textarea>
+              <label for="flaws">Flaws</label><textarea name="flaws">${character.flaw}</textarea>
             </div>
           </section>
           <section class="features">

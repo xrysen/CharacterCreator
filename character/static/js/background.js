@@ -92,7 +92,7 @@ const showBackgroundInfo = (background) => {
 
   for (let i = 0; i <=5; i++) {
     $("#ideals").append(
-      `<option id = "ideal-${i + 1}" value="${background.background_ideals[i].name}"><strong>${background.background_ideals[i].name}.</strong> ${background.background_ideals[i].description}</option>`
+      `<option id = "ideal-${i + 1}" value="${background.background_ideals[i].name}. ${background.background_ideals[i].description}"><strong>${background.background_ideals[i].name}.</strong> ${background.background_ideals[i].description}</option>`
     );
     $("#bonds").append(
       `<option id = "bond-${i + 1}" value="${background.background_bonds[i].description}">${background.background_bonds[i].description}</option>`
