@@ -10,6 +10,29 @@ const removeBInfo = () => {
   $(".class-info").remove();
 }
 
+const checkBG = (background) => {
+  const pt = $("#personality-trait");
+  const ideals = $("#ideals");
+  const flaws = $("#flaws");
+  const bonds = $("#bonds");
+
+  if (pt.val() && ideals.val() && bonds.val() && flaws.val()) {
+    $('.class-container').append(`<br /><br />
+    <button id = "nxt-btn" class = "btn btn-primary"> Next</button>`);
+    character.personalityTrait = $("#personality-trait").val();
+    character.ideal = $("#ideals").val();
+    character.bond = $("#bonds").val();
+    character.flaw = $("#flaws").val();
+    $("#nxt-btn").on("click", () => {
+      character.skills.push(background.skills[0].skill_name);
+        character.skills.push(background.skills[1].skill_name);
+      $(".main-container").remove();
+      $("#bs").remove();
+      generateCharacterSheet();
+    })
+  }
+}
+
 const showBackgroundInfo = (background) => {
   removeBInfo();
   $(".class-container").append(
@@ -44,6 +67,22 @@ const showBackgroundInfo = (background) => {
     </div>
     `
   )
+  
+  $("#personality-trait").on("change", () => {
+    checkBG(background);
+  })
+
+  $("#flaws").on("change", () => {
+    checkBG(background);
+  })
+
+  $("#bonds").on("change", () => {
+    checkBG(background);
+  });
+
+  $("#ideals").on("change", () => {
+    checkBG(background);
+  });
 
   for (let i = 0; i <=7; i++) {
     $("#personality-trait").append(
@@ -65,26 +104,20 @@ const showBackgroundInfo = (background) => {
 
   $("#trait-btn").on("click", () => {
     $(`#trait-${rollDice(8)}`).attr("selected","selected");
-    $('.class-container').append(`<br /><br />
-    <button id = "nxt-btn" class = "btn btn-primary"> Next</button>`);
-    character.personalityTrait = $("#personality-trait").val();
-    $("#nxt-btn").on("click", () => {
-      character.skills.push(background.skills[0].skill_name);
-        character.skills.push(background.skills[1].skill_name);
-      $(".main-container").remove();
-      $("#bs").remove();
-      generateCharacterSheet();
-    })
+    checkBG(background);
   });
 
   $("#ideal-btn").on("click", () => {
     $(`#ideal-${rollDice(6)}`).attr("selected", "selected");
+    checkBG(background);
   })
   $("#bond-btn").on("click", () => {
     $(`#bond-${rollDice(6)}`).attr("selected", "selected");
+    checkBG(background);
   })
   $("#flaw-btn").on("click", () => {
     $(`#flaw-${rollDice(6)}`).attr("selected", "selected");
+    checkBG(background);
   })
 
 }
