@@ -217,7 +217,7 @@ const generateCharacterSheet = () => {
             <div class="hp">
               <div class="regular">
                 <div class="max">
-                  <label for="maxhp">Hit Point Maximum</label><input name="maxhp" placeholder="10" type="text" />
+                  <label for="maxhp">Hit Point Maximum</label><input name="maxhp" placeholder="10" type="text" value=${character.maxHP} />
                 </div>
                 <div class="current">
                   <label for="currenthp">Current Hit Points</label><input name="currenthp" type="text" />

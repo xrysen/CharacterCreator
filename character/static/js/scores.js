@@ -342,7 +342,9 @@ const addSelectListeners = (id) => {
         currentTotal = Number($(`#${selectedStat}-total`).text());
         $(`#${selectedStat}-mod`).text(calculateModifier(currentTotal));
         statModifiers[`${selectedStat}Mod`] = calculateModifier(currentTotal);
+        
       }
+      character.maxHP = character.maxHP + Number(statModifiers.conMod);
       $("#apply-score").remove();
       $(".score-container").append(
         `<button class = "btn btn-primary" id = "generate-sheet" style = "margin-top: 20px;">Generate Character Sheet</button>`

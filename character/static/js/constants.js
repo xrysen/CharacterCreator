@@ -30,5 +30,7 @@ let character = {
   personalityTrait: "",
   ideal: "",
   bond: "",
-  flaw: ""
+  flaw: "",
+  passivePerception: 0,
+  maxHP: 0,
 }

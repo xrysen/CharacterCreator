@@ -99,6 +99,7 @@ const showCinfo = (playerClass) => {
     }
     character.savingThrows.push(playerClass.class_save_throw1);
     character.savingThrows.push(playerClass.class_save_throw2);
+    character.maxHP = playerClass.class_first_hp;
     emptyClassContainer();
     scoreCalcTemplate();
     rollBlock();
