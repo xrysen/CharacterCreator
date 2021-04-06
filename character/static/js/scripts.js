@@ -174,6 +174,7 @@
             `
           );
           $(`#race-${race.id}`).on("click", () => {
+            character.subRace = "";
             character.race = race.race_name;
             showRaceInfo(race);
             $(".race-info").append(`<button class = "btn btn-primary btn-lg" id = "next-button">Next</button>`);
