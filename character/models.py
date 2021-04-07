@@ -120,3 +120,25 @@ class WeaponCategory(models.Model):
   def __str__(self):
     return self.name
 
+class WeaponType(models.Model):
+  weapon_type = models.CharField(max_length=30)
+
+  def __str__(self):
+    return self.weapon_type
+
+class WeaponProperty(models.Model):
+  name = models.CharField(max_length=30)
+
+  def __str__(self):
+    return self.name
+
+class Weapon(models.Model):
+  name = models.CharField(max_length=30)
+  category = models.ForeignKey(WeaponCategory, on_delete=models.CASCADE, related_name="weapon_category")
+  weapon_type = models.ForeignKey(WeaponType, on_delete=models.CASCADE, related_name = "weap_type")
+  dmg = models.CharField(max_length=10)
+  properties = models.ManyToManyField(WeaponProperty, related_name="weapon_properties")
+
+  def __str__(self):
+    return self.name
+  
