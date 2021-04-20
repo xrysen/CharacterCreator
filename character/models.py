@@ -141,4 +141,18 @@ class Weapon(models.Model):
 
   def __str__(self):
     return self.name
+
+class ArmorCategory(models.Model):
+  name = models.CharField(max_length=30)
+
+  def __str__(self):
+    return self.name
+
+class Armor(models.Model):
+  name = models.CharField(max_length=30)
+  category = models.ForeignKey(ArmorCategory, on_delete=models.CASCADE, related_name="armor_category")
+  ac = models.IntegerField()
+
+  def __str__(self):
+    return self.name
   
