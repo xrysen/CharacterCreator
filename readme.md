@@ -14,6 +14,8 @@ It is in the very early stages of development.
 
 <img src = "https://github.com/xrysen/CharacterCreator/blob/main/docs/ss3.png?raw=true">
 
+<img src = "https://github.com/xrysen/CharacterCreator/blob/main/docs/ss4.png?raw=true">
+
 ## Technologies
 Frontend:
 - HTML 5
